@@ -14,12 +14,14 @@ body {
   background-image: url(MainImage.jpg);
   background-size: 600px;
 }
-p {
+.AppName {
   text-align: center;
   font-size: 40px;
   margin-top: 15px;
   height: 30px;
   font-family: 'Fascinate', cursive;
+  color: rgb(97, 96, 96);
+  text-shadow: 1px 1px rgb(241, 214, 210);
 }
 nav {
   display: block;
@@ -38,9 +40,9 @@ nav li {
 
   transition: color 0.3s ease;
 }
-nav li:hover {
-  color: tomato;
-}
+// nav li:hover {
+//   color: tomato;
+// }
 
 nav input {
   display: block;
@@ -141,6 +143,29 @@ ul li {
  */
 nav input:checked ~ ul {
   transform: none;
+}
+
+input {
+  margin: 5px;
+  width: 130px;
+  text-align: center;
+  background-color: #edededb2;
+}
+aside {
+  text-align: center;
+}
+button.Random {
+  border-radius: 50%;
+  background-color: rgba(235, 171, 162, 0.568);
+  color: rgb(75, 75, 75);
+}
+footer {
+  text-align: center;
+}
+section {
+  border-top: thin solid rgb(196, 151, 146);
+  margin-top: 15px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 550px) {

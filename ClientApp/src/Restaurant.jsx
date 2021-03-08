@@ -4,7 +4,7 @@ export function Restaurant() {
   return (
     <>
       <header>
-        <p>Feed Me</p>
+        <p className="AppName">Feed Me</p>
         <nav>
           <input type="checkbox" />
           <span></span>
