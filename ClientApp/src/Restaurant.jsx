@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
 
 export function Restaurant() {
   return (
     <>
       <div className="Restaurants">
+      <button>Add Restaurant</button>
         <div className="Search">
           <input type="Text" placeholder="Search" />
         </div>

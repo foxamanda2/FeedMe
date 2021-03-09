@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Fascinate&family=Raleway&display=swap');
 
 :root {
   font: 16px / 1 sans-serif;
@@ -13,6 +14,7 @@ body {
   min-height: 100%;
   background-image: url(MainImage.jpg);
   background-size: 600px;
+  font-family: 'Raleway', sans-serif;
 }
 .AppName {
   text-align: center;
@@ -39,10 +41,11 @@ nav li {
   color: #232323;
 
   transition: color 0.3s ease;
+  font-family: 'Raleway', sans-serif;
 }
-// nav li:hover {
-//   color: tomato;
-// }
+nav li:hover {
+  color: rgb(196, 151, 146);;
+}
 
 nav input {
   display: block;
@@ -67,7 +70,7 @@ nav span {
   margin-bottom: 5px;
   position: relative;
 
-  background: rgb(235, 170, 162);
+  background: rgb(196, 151, 146);
   border-radius: 3px;
 
   z-index: 1;
@@ -93,7 +96,7 @@ nav span:nth-last-child(2) {
 nav input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: rgb(235, 170, 162);
+  background: rgb(196, 151, 146);
 }
 
 /*
@@ -162,6 +165,7 @@ button.Random {
   color: rgb(75, 75, 75);
   margin-top: 10px;
   padding: 5px;
+
 }
 footer {
   text-align: center;
@@ -190,12 +194,13 @@ a :hover {
 div.Search {
   text-align: center;
 }
-div.Restaurants section {
+// Creating white space for a scroll on large view
+div.Restaurants{
   max-height: rem;
   overflow-y: scroll;
   position: relative;
 }
-section button {
+div.Restaurants button {
   border-radius: 50%;
   background-color: rgba(235, 171, 162, 0.568);
   color: rgb(75, 75, 75);
