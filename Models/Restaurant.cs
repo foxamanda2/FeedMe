@@ -24,7 +24,5 @@ namespace FeedMe.Models
         
         public bool OpenEarly { get; set; }
         
-        
-        
     }
 }
