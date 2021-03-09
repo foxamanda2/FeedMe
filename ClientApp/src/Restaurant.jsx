@@ -20,7 +20,7 @@ export function Restaurant() {
           <address> 217 S Dale Mabry Hwy, Tampa, FL 33609</address>
           <p>(813) 305-2473</p>
           <p>Hours: 10am-9pm</p>
-          <button>Review</button>
+          <button>Leave a Review</button>
         </section>
         <section>
           <a href="https://farmacyvegankitchen.com/?utm_source=GMBlisting&utm_medium=organic">
@@ -35,7 +35,7 @@ export function Restaurant() {
           <address> 803 N Tampa St, Tampa, Florida 33602</address>
           <p>(786) 681-1644</p>
           <p>Hours: 11am-4pm</p>
-          <button>Review</button>
+          <button>Leave a Review</button>
         </section>
         <section>
           <a href="https://www.ilovesweetsoul.com/">
@@ -51,7 +51,7 @@ export function Restaurant() {
           <address> 1101 S Howard Ave, Tampa, FL 33606</address>
           <p>813) 575-7100</p>
           <p>Hours: 9am-9pm</p>
-          <button>Review</button>
+          <button>Leave a Review</button>
         </section>
       </div>
     </>
