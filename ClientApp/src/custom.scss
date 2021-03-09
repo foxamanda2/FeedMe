@@ -26,8 +26,8 @@ body {
 nav {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
+  top: -25px;
+  left: 10px;
 
   z-index: 1;
 
@@ -122,9 +122,9 @@ ul {
   padding: 50px;
   padding-top: 125px;
 
-  background: #ededed;
+  background: #ededed00;
   list-style-type: none;
-  // -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
 
   transform-origin: 0% 0%;
@@ -136,6 +136,7 @@ ul {
 ul li {
   padding: 10px 0;
   font-size: 22px;
+  background-color: #ededede8;
 }
 
 /*
@@ -150,6 +151,7 @@ input {
   width: 130px;
   text-align: center;
   background-color: #edededb2;
+  margin-top: 20px;
 }
 aside {
   text-align: center;
@@ -166,6 +168,34 @@ section {
   border-top: thin solid rgb(196, 151, 146);
   margin-top: 15px;
   text-align: center;
+}
+article {
+  display: flex;
+  justify-content: space-between;
+}
+.Map {
+  background-color: white;
+  padding: 100px;
+  margin-right: 20px;
+}
+a {
+  color: #141414;
+}
+a :hover {
+  color: rgb(196, 151, 146);
+}
+div.Search {
+  text-align: center;
+}
+div.Restaurants section {
+  max-height: rem;
+  overflow-y: scroll;
+  position: relative;
+}
+section button {
+  border-radius: 50%;
+  background-color: rgba(235, 171, 162, 0.568);
+  color: rgb(75, 75, 75);
 }
 
 @media only screen and (min-width: 550px) {
