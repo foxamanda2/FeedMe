@@ -16,15 +16,24 @@ body {
   background-size: 600px;
   font-family: 'Raleway', sans-serif;
 }
+// Header for App
 .AppName {
   text-align: center;
   font-size: 40px;
-  margin-top: 15px;
+  margin-top: 25px;
   height: 30px;
   font-family: 'Fascinate', cursive;
   color: rgb(97, 96, 96);
   text-shadow: 1px 1px rgb(241, 214, 210);
 }
+
+// Body Description for Home
+.Intro {
+  text-align: center;
+  margin: 200px 30px;
+  background-color: #ededed73;
+}
+
 nav {
   display: block;
   position: relative;
@@ -36,7 +45,7 @@ nav {
   -webkit-user-select: none;
   user-select: none;
 }
-nav li {
+header nav li {
   text-decoration: none;
   color: #232323;
 
@@ -44,7 +53,7 @@ nav li {
   font-family: 'Raleway', sans-serif;
 }
 nav li:hover {
-  color: rgb(196, 151, 146);;
+  color: rgb(196, 151, 146);
 }
 
 nav input {
@@ -118,7 +127,7 @@ nav input:checked ~ span:nth-last-child(2) {
  * Make this absolute positioned
  * at the top left of the screen
  */
-ul {
+header ul {
   position: absolute;
   width: 300px;
   margin: -100px 0 0 -50px;
@@ -136,7 +145,7 @@ ul {
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
-ul li {
+header ul li {
   padding: 10px 0;
   font-size: 22px;
   background-color: #ededede8;
@@ -149,6 +158,7 @@ nav input:checked ~ ul {
   transform: none;
 }
 
+// Body For Random
 input {
   margin: 5px;
   width: 130px;
@@ -156,62 +166,80 @@ input {
   background-color: #edededb2;
   margin-top: 20px;
 }
+
 aside {
   text-align: center;
 }
+
 button.Random {
   border-radius: 50%;
   background-color: rgba(235, 171, 162, 0.568);
   color: rgb(75, 75, 75);
   margin-top: 10px;
   padding: 5px;
-
 }
+
+section.RandomRest p,
+address {
+  font-size: 15px;
+}
+
 footer {
   text-align: center;
 }
-section {
-  border-top: thin solid rgb(196, 151, 146);
-  margin-top: 15px;
-  text-align: center;
+
+h2 {
+  font-size: 25px;
 }
 article {
   display: flex;
   justify-content: space-between;
 }
+
 .Map {
   background-color: white;
   padding: 100px;
   margin-right: 20px;
 }
-a {
-  color: #141414;
+
+// Body for Restaurants
+.Restaurants li {
+  border-top: thin solid rgb(196, 151, 146);
+  margin-top: 15px;
+  text-align: center;
+  list-style: none;
 }
-a :hover {
-  color: rgb(196, 151, 146);
-  text-decoration: none;
+
+.Restaurants ul {
+  padding: 0px;
 }
+
 div.Search {
   text-align: center;
 }
-// Creating white space for a scroll on large view
-div.Restaurants{
-  max-height: rem;
-  overflow-y: scroll;
-  position: relative;
-}
+
 div.Restaurants button {
   border-radius: 50%;
   background-color: rgba(235, 171, 162, 0.568);
   color: rgb(75, 75, 75);
   padding: 5px;
 }
-h2 {
-  font-size: 25px;
+
+// Creating white space for a scroll on large view
+div.Restaurants {
+  max-height: rem;
+  overflow-y: scroll;
+  position: relative;
 }
-section.RandomRest p,
-address {
-  font-size: 15px;
+
+// All Links Colors and hover
+a {
+  color: #141414;
+}
+
+a :hover {
+  color: rgb(196, 151, 146);
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 550px) {
