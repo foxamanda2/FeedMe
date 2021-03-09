@@ -1,6 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+function SingleRestaurantFromList(props) {
+  return (
+    <li>
+      <a href={props.website}>
+        <h2>{props.name}</h2>
+      </a>
+      <p>$$</p>
+      <p>{props.description}</p>
+      <address> {props.address}</address>
+      <p>{props.phoneNum}</p>
+      <button>Leave a Review</button>
+    </li>
+  )
+}
 
 export function Restaurant() {
+  const [restaurants, setRestaurants] = useState([
+    {
+      id: 1,
+      name: 'Cali Bowl: South Tampa',
+      description:
+        'A hip restaurant that promotes sustainable food as well as acceptance for all diets.',
+      address: '217 S Dale Mabry Hwy, Tampa, FL 33609',
+      phoneNum: '(813) 305-2473',
+      typeOfFood: 'American Latin',
+      priceRange: '$$',
+      dietaryMenu: true,
+      website: 'https://www.eatatcali.com/',
+      openLate: false,
+      openEarly: false,
+    },
+    {
+      id: 2,
+      name: 'Farmacy Vegan Kitchen + Bakery',
+      description:
+        'This urban spot serves all kinds of all vegan comfort food. From mac and cheese to a philly cheese steak made from impossible meat, you are sure to find something delicious.',
+      address: '803 N Tampa St, Tampa, Florida 33602',
+      phoneNum: '(786) 681-1644',
+      typeOfFood: 'Comfort',
+      priceRange: '$$',
+      dietaryMenu: true,
+      website:
+        'https://farmacyvegankitchen.com/?utm_source=GMBlisting&utm_medium=organic',
+      openLate: false,
+      openEarly: false,
+    },
+  ])
   return (
     <>
       <div className="Restaurants">
@@ -8,8 +54,21 @@ export function Restaurant() {
         <div className="Search">
           <input type="Text" placeholder="Search" />
         </div>
-        <ul>
-          <li>
+        <ul className="results">
+          {restaurants.map(function (restaurant) {
+            return (
+              <SingleRestaurantFromList
+                key={restaurant.id}
+                name={restaurant.name}
+                description={restaurant.description}
+                address={restaurant.address}
+                phoneNum={restaurant.phoneNum}
+                website={restaurant.website}
+              />
+            )
+          })}
+        </ul>
+        {/* <li>
             <a href="https://www.eatatcali.com/">
               <h2>Cali Bowl: South Tampa</h2>
             </a>
@@ -54,7 +113,7 @@ export function Restaurant() {
             <p>Hours: 9am-9pm</p>
             <button>Leave a Review</button>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </>
   )
