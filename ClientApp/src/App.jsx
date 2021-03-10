@@ -4,27 +4,8 @@ import { Randomizer } from './pages/Randomizer'
 import { Restaurant } from './pages/Restaurant'
 import { Link, Route, Switch } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
+import { NewRestaurant } from './pages/NewRestaurant'
 
-export function NewRestaurant() {
-  return (
-    <>
-      <form action="submit">
-        <h2>Add A New Restaurant</h2>
-        <input type="text" placeholder="Name of Restaurant" />
-        <input type="text" placeholder="Description" />
-        <input type="text" placeholder="Address" />
-        <input type="text" placeholder="Phone Number" />
-        <input type="text" placeholder="Type Of Food" />
-        <input type="text" placeholder="Price Range (Show with $)" />
-        <input type="text" placeholder="Website" />
-        <input type="checkbox" placeholder="Dietary Menu" />
-        <input type="checkbox" placeholder="Open Late" />
-        <input type="checkbox" placeholder="Open Early" />
-        <button>Submit</button>
-      </form>
-    </>
-  )
-}
 export function App() {
   return (
     <>

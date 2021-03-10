@@ -232,6 +232,26 @@ div.Restaurants {
   position: relative;
 }
 
+// New Restaurant Page
+form.NewRest textarea {
+  background-color: #edededb6;
+}
+
+form.NewRest {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+section.TextField {
+  display: flex;
+  flex-direction: column;
+}
+
+input.Checked {
+  align-items: center;
+}
+
 // All Links Colors and hover
 a {
   color: #141414;
