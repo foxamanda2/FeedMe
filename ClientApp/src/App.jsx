@@ -5,6 +5,7 @@ import { Restaurant } from './pages/Restaurant'
 import { Link, Route, Switch } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { NewRestaurant } from './pages/NewRestaurant'
+import { About } from './pages/About'
 
 export function App() {
   return (
@@ -45,6 +46,9 @@ export function App() {
           </Route>
           <Route exact path="/new">
             <NewRestaurant />
+          </Route>
+          <Route exact path="/about">
+            <About />
           </Route>
           <Route path="*">This food page was not found</Route>
         </Switch>
