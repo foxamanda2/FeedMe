@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export function NewRestaurant() {
   const [newRestaurant, setNewRestaurant] = useState({
@@ -15,8 +15,7 @@ export function NewRestaurant() {
     openEarly: false,
   })
   const [message, setMessage] = useState('')
-
-  const history = useHistory()
+  const [errorMessage, setErrorMessage] = useState('')
 
   function handleFieldChange(event) {
     const value = event.target.value
@@ -44,27 +43,30 @@ export function NewRestaurant() {
 
     const json = await response.json()
 
-    // history.push('/')
+    if (response.status === 400) {
+      setErrorMessage(Object.values(json.errors).join(' '))
+    } else {
+      setNewRestaurant({
+        name: '',
+        description: '',
+        address: '',
+        phoneNum: '',
+        typeOfFood: '',
+        priceRange: '',
+        dietaryMenu: false,
+        website: '',
+        openLate: false,
+        openEarly: false,
+      })
 
-    setNewRestaurant({
-      name: '',
-      description: '',
-      address: '',
-      phoneNum: '',
-      typeOfFood: '',
-      priceRange: '',
-      dietaryMenu: false,
-      website: '',
-      openLate: false,
-      openEarly: false,
-    })
-
-    setMessage('Submitted new food! Thank You!')
+      setMessage('Submitted new food! Thank You!')
+    }
   }
 
   return (
     <>
       <form action="submit" className="NewRest" onSubmit={handleSubmit}>
+        {errorMessage && <p className="error">{errorMessage}</p>}
         <h2>Add A New Restaurant</h2>
         <section className="TextField">
           {/* Name Of Restaurant */}

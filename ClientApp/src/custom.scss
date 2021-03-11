@@ -14,6 +14,7 @@ body {
   min-height: 100%;
   background-image: url(MainImage.jpg);
   background-size: 600px;
+  background-attachment: fixed;
   font-family: 'Raleway', sans-serif;
 }
 // Header for App
@@ -221,7 +222,7 @@ article {
     margin-top: 15px;
     text-align: center;
     list-style: none;
-    background-color: #edededa4;
+    background-color: #edededc7;
   }
 }
 
