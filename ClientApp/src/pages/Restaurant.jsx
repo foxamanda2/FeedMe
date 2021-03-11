@@ -63,6 +63,7 @@ export function Restaurant() {
                 address={restaurant.address}
                 phoneNum={restaurant.phoneNum}
                 website={restaurant.website}
+                // Should display open late, early, and dietary menu
               />
             )
           })}

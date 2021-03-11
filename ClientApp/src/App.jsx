@@ -22,13 +22,13 @@ export function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/all">Restaurants</a>
+                <Link to="all">Restaurants</Link>
               </li>
               <li>
-                <a href="/random">Randomizer</a>
+                <Link to="/random">Randomizer</Link>
               </li>
               <li>
-                <a href="/about">Our Table</a>
+                <Link to="/about">Our Table</Link>
               </li>
             </ul>
           </nav>
