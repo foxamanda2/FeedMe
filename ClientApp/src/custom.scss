@@ -203,15 +203,16 @@ article {
 }
 
 // Body for Restaurants
-.Restaurants li {
-  border-top: thin solid rgb(196, 151, 146);
-  margin-top: 15px;
-  text-align: center;
-  list-style: none;
-}
-
 .Restaurants ul {
   padding: 0px;
+
+  li {
+    border-top: thin solid rgba(235, 171, 162, 0.568);
+    margin-top: 15px;
+    text-align: center;
+    list-style: none;
+    background-color: #edededa4;
+  }
 }
 
 div.Search {
@@ -233,23 +234,50 @@ div.Restaurants {
 }
 
 // New Restaurant Page
-form.NewRest textarea {
-  background-color: #edededb6;
+form.NewRest {
+  background-color: #edededab;
+  color: rgb(85, 84, 84);
+
+  textarea {
+    background-color: #edededb6;
+  }
+
+  section,
+  h2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 }
 
-form.NewRest {
-  display: flex;
-  flex-direction: column;
+form.NewRest .TextField input,
+textarea {
+  display: inline-grid;
+  vertical-align: top;
+  align-items: center;
+  position: relative;
+  padding: 0.25em 0.5em;
+  margin: 5px;
+  align-items: stretch;
+  width: 20rem;
   text-align: center;
 }
 
-section.TextField {
-  display: flex;
-  flex-direction: column;
+section.Checked input {
+  align-items: center;
+  margin-top: 0px;
 }
 
-input.Checked {
-  align-items: center;
+form.NewRest div {
+  text-align: center;
+
+  button {
+    border-radius: 50%;
+    background-color: rgba(235, 171, 162, 0.568);
+    color: rgb(75, 75, 75);
+    padding: 5px;
+  }
 }
 
 // All Links Colors and hover

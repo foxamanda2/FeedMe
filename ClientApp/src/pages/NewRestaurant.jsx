@@ -5,7 +5,7 @@ export function NewRestaurant() {
     <>
       <form action="submit" className="NewRest">
         <h2>Add A New Restaurant</h2>
-        <section className="TypeField">
+        <section className="TextField">
           <input type="text" placeholder="Name of Restaurant" />
           <textarea type="text" placeholder="Description"></textarea>
           <textarea type="text" placeholder="Address"></textarea>
@@ -25,7 +25,9 @@ export function NewRestaurant() {
           </label>
           <input type="checkbox" placeholder="Open Early" />
         </section>
-        <button>Submit</button>
+        <div>
+          <button>Submit</button>
+        </div>
       </form>
     </>
   )
