@@ -159,6 +159,17 @@ nav input:checked ~ ul {
   transform: none;
 }
 
+header {
+  display: block;
+  position: sticky;
+  top: 10px;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  background: linear-gradient(transparent, #ededed);
+  z-index: 9999;
+}
+
 // Body For Random
 input {
   margin: 5px;
@@ -170,6 +181,9 @@ input {
 
 aside {
   text-align: center;
+  select {
+    background-color: #edededb2;
+  }
 }
 
 button.Random {
@@ -212,7 +226,27 @@ article {
   margin-right: 20px;
   // margin-left: 50px;
 }
+// Stars
+.stars {
+  --rating: 0;
+  --percent: calc(var(--rating) / 5 * 100%);
 
+  display: inline-block;
+}
+
+.stars::before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: linear-gradient(
+    90deg,
+    goldenrod var(--percent),
+    #ccc var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+Resources
 // Body for Restaurants
 .Restaurants ul {
   padding: 0px;

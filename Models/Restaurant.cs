@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace FeedMe.Models
 {
     public class Restaurant
@@ -23,6 +25,12 @@ namespace FeedMe.Models
         public bool OpenLate { get; set; }
         
         public bool OpenEarly { get; set; }
+
+        public List<Review> Reviews { get; set; }
+        
+        public List<RestaurantDietType> RestaurantDietTypes { get; set; }
+        
+        
         
     }
 }

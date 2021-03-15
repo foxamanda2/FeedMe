@@ -5,9 +5,13 @@ INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOf
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Sweet Soul SoHo', 'A little hole in the wall located in SoHo, this smoothie bowl spot is a must try for those with a sweet tooth wanting to stay healthy. They have superfood smoothies, bowls, vegan soft serve, and even vegan nutella.', '1101 S Howard Ave, Tampa, FL 33606', '(813) 575-7100','Dessert','$$', true, 'https://www.ilovesweetsoul.com/',false, true);
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Dharma Fine Vittles: Tampa', 'Located inside an modern urban food court this spot is a must try. They have all kinds of gourmet comfort foods. Their mac and cheese is to die for. ', '1910 N Ola Ave Suite 113, Tampa, FL 33602', '(813) 803-9998','Comfort','$$', true, 'https://dharmafinevittles.com/',true, true);
 
+INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (1, '2021-03-12 14:23:55', 'Great Variety', 'This food not only tastes healthy, but it also has a great variety for everyone!', 5);
+INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (1, '2021-03-12 18:23:55', 'Diet Friendly', 'As soon as you order your food the waiter asks you if you have any dietary restrictions. They do a great job at making their ingridients clear on the menu.', 5);
 
 VALUES ('Dharma Fine Vittles: Tampa', 'Located inside an modern urban food court this spot is a must try. They have all kinds of gourmet comfort foods. Their mac and cheese is to die for. ', '1910 N Ola Ave Suite 113, Tampa, FL 33602', '(813) 803-9998','Comfort','$$', true, 'https://dharmafinevittles.com/',true, true);
 
+INSERT INTO "DietType" ("", "CreatedAt", "Summary", "Body", "Stars") VALUES (1, '2020-01-01 14:23:55', 'Yummy Food', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima modi impedit quisquam sit, saepe enim placeat a vero voluptas asperiores atque laudantium in, nobis sunt blanditiis dignissimos. Deleniti, esse optio!', 3);
+INSERT INTO "DietType" ("RestaurantId", "CreatedAt", "Summary", "Body", "Stars") VALUES (1, '2020-01-01 18:23:55', 'Mmmmm, good', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima modi impedit quisquam sit, saepe enim placeat a vero voluptas asperiores atque laudantium in, nobis sunt blanditiis dignissimos. Deleniti, esse optio!', 4);
 
 
 

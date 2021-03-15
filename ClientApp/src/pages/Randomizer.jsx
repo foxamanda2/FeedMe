@@ -4,6 +4,11 @@ export function Randomizer() {
   return (
     <>
       <aside>
+        <select className="Diet">
+          <option value="Vegan">Vegan</option>
+          <option value="Gluten">Gluten Free</option>
+          <option value="Veg">Vegetarian</option>
+        </select>
         <input type="text" placeholder="Diet" />
         <input type="text" placeholder="Hours" />
         <input type="text" placeholder="Type" />
@@ -29,7 +34,9 @@ export function Randomizer() {
       </section>
       <article>
         <p>Reviews</p>
-        <i className="fab fa-pagelines"></i>
+        <div class="stars">
+          <span style={{ '--rating': 4.7 }}></span>
+        </div>
         <p className="Map">Map</p>
       </article>
       {/* <footer>

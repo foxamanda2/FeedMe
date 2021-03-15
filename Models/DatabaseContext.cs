@@ -15,9 +15,12 @@ namespace FeedMe.Models
 
         // Add database tables here
         public DbSet<Restaurant> Restaurants { get; set; }
-        
-        
 
+        public DbSet<Review> Reviews { get; set; }
+        
+        public DbSet<DietType> Diets { get; set; }
+
+        public DbSet<RestaurantDietType> RestaurantDietTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -27,10 +27,16 @@ export function NewRestaurant() {
   }
 
   // 19 min in the lecture
-  // function hangleBoolFieldChange(event) {
-  //   const value = parse.bool(event.target.value)
-  //   const fieldBool = event.target.value
+  // function handleBoolChange() {
+  //   if ($(this).is(':checked')) {
+  //     $(this).attr('value', 'true');
+  //   } else {
+  //     $(this).attr('value', 'false');
+  //   }
   // }
+
+  //   $('#checkbox-value').text($('#checkbox1').val());
+  // })
 
   async function handleSubmit(event) {
     event.preventDefault()
