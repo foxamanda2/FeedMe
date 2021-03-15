@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bitter&family=Fascinate&family=Raleway&display=swap');
 
+$button-color: rgba(235, 171, 162, 0.76);
+$button-text: rgb(75, 75, 75);
+$accent-color: rgb(196, 151, 146);
+$background-color: #edededc7;
+
 :root {
   font: 16px / 1 sans-serif;
 }
@@ -181,6 +186,7 @@ input {
 
 aside {
   text-align: center;
+  margin: 0px auto;
   select {
     background-color: #edededb2;
   }
@@ -188,7 +194,7 @@ aside {
 
 button.Random {
   border-radius: 50%;
-  background-color: rgba(235, 171, 162, 0.568);
+  background-color: $button-color;
   color: rgb(75, 75, 75);
   margin-top: 10px;
   padding: 5px;
@@ -210,28 +216,21 @@ footer {
 h2 {
   font-size: 25px;
 }
-article {
-  display: flex;
-
-  p {
-    background-color: #edededab;
-    width: 150px;
-    margin-right: 10px;
-  }
-}
 
 .Map {
   background-color: white;
   padding: 100px;
   margin-right: 20px;
-  // margin-left: 50px;
+  margin-left: 20px;
 }
+
 // Stars
 .stars {
-  --rating: 0;
+  --rating: 4.5;
   --percent: calc(var(--rating) / 5 * 100%);
 
   display: inline-block;
+  margin-right: 20px;
 }
 
 .stars::before {
@@ -239,25 +238,29 @@ article {
   letter-spacing: 3px;
   background: linear-gradient(
     90deg,
-    goldenrod var(--percent),
-    #ccc var(--percent)
+    $accent-color var(--percent),
+    $button-text var(--percent)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-Resources
 // Body for Restaurants
 .Restaurants ul {
   padding: 0px;
+}
 
-  li {
-    border-top: thin solid rgba(235, 171, 162, 0.568);
-    margin-top: 15px;
-    text-align: center;
-    list-style: none;
-    background-color: #edededc7;
-  }
+.Restaurants li {
+  border-top: thin solid rgba(235, 171, 162, 0.568);
+  margin-top: 15px;
+  text-align: center;
+  list-style: none;
+  background-color: #edededc7;
+}
+
+.Restaurants a h2 {
+  text-decoration: underline;
+  color: rgb(2, 2, 100);
 }
 
 div.Search {
@@ -266,8 +269,8 @@ div.Search {
 
 div.Restaurants button {
   border-radius: 50%;
-  background-color: rgba(235, 171, 162, 0.568);
-  color: rgb(75, 75, 75);
+  background-color: $button-color;
+  color: $button-text;
   padding: 5px;
 }
 
@@ -326,8 +329,8 @@ form.NewRest div {
 
   button {
     border-radius: 50%;
-    background-color: rgba(235, 171, 162, 0.568);
-    color: rgb(75, 75, 75);
+    background-color: $button-color;
+    color: $button-text;
     padding: 10px;
     margin-bottom: 40px;
   }
@@ -339,7 +342,7 @@ a {
 }
 
 a :hover {
-  color: rgb(196, 151, 146);
+  color: $accent-color;
   text-decoration: none;
 }
 

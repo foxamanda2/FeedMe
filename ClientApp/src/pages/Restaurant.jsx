@@ -11,6 +11,9 @@ function SingleRestaurantFromList(props) {
       <p>{props.description}</p>
       <address> {props.address}</address>
       <p>{props.phoneNum}</p>
+      <p className="stars">
+        <span style={{ '--rating': 4.7 }}></span>({props.reviewCount})
+      </p>
       <button>Leave a Review</button>
     </li>
   )
@@ -24,7 +27,7 @@ export function Restaurant() {
   useEffect(() => {
     async function fetchRestaurants() {
       const url =
-        filterText.lengt === 0
+        filterText.length === 0
           ? '/api/Restaurants'
           : `/api/Restaurants?filter=${filterText}`
 
@@ -63,6 +66,7 @@ export function Restaurant() {
                 address={restaurant.address}
                 phoneNum={restaurant.phoneNum}
                 website={restaurant.website}
+                reviewCount={restaurant.reviews.length}
                 // Should display open late, early, and dietary menu
               />
             )

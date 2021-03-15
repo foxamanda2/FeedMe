@@ -31,12 +31,11 @@ export function Randomizer() {
         <address> 803 N Tampa St, Tampa, Florida 33602</address>
         <p>(786) 681-1644</p>
         <p>Hours: 11am-4pm</p>
+        <div className="stars">
+          <span style={{ '--rating': 4.7 }}></span>(2)
+        </div>
       </section>
       <article>
-        <p>Reviews</p>
-        <div class="stars">
-          <span style={{ '--rating': 4.7 }}></span>
-        </div>
         <p className="Map">Map</p>
       </article>
       {/* <footer>
