@@ -19,7 +19,7 @@ namespace FeedMe.Models
         public string PriceRange { get; set; }
         
         public bool DietaryMenu { get; set; }
-        
+
         public string Website { get; set; }
         
         public bool OpenLate { get; set; }
@@ -28,9 +28,6 @@ namespace FeedMe.Models
 
         public List<Review> Reviews { get; set; }
         
-        public List<RestaurantDietType> RestaurantDietTypes { get; set; }
-        
-        
-        
+        public List<RestaurantDietType> RestaurantDietTypes { get; set; }   
     }
 }

@@ -4,8 +4,6 @@ namespace FeedMe.Models
     {
         public int Id { get; set; }
         
-        // public string DietType { get; set; }
-        
         public int RestaurantId { get; set; }
         
         public Restaurant Restaurants { get; set; }

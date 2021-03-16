@@ -1,5 +1,4 @@
- TRUNCATE TABLE "Restaurants", "Reviews" RESTART IDENTITY;
- TRUNCATE TABLE "RestaurantDietTypes" RESTART IDENTITY;
+ TRUNCATE TABLE "Restaurants", "Reviews","RestaurantDietTypes","Diets" RESTART IDENTITY;
 
 
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Cali Bowl: South Tampa', 'A hip restaurant that promotes sustainable food as well as acceptance for all diets.', '217 S Dale Mabry Hwy, Tampa, FL 33609', '(813) 305-2473','American Latin','$$', true, 'https://www.eatatcali.com/',false, false);

@@ -8,7 +8,6 @@ namespace FeedMe.Models
         
         public string Diet { get; set; }
         
-        // public List<RestaurantDietType> RestaurantDietType { get; set; }
-                
+        public List<RestaurantDietType> RestaurantDietTypes { get; set; }           
     }
 }
