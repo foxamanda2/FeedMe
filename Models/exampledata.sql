@@ -25,6 +25,13 @@ INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,3);
 
 INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,4);
 
+
+SELECT "Restaurants"."Name","Diets"."Diet"
+ FROM "Restaurants"
+ JOIN "RestaurantDietTypes" ON "RestaurantDietTypes"."RestaurantId"="Restaurants
+ "."Id"
+ JOIN "Diets" ON "Diets"."Id"="RestaurantDietTypes"."DietTypeId";
+ 
     --           {
     --   id: 1,
     --   name: 'Cali Bowl: South Tampa',

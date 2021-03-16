@@ -29,8 +29,6 @@ export function Reviews() {
     fetchRestaurant()
   }, [id])
 
-  console.log(restaurant)
-
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
   return (
     <>

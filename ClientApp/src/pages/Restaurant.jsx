@@ -11,6 +11,13 @@ function SingleRestaurantFromList(props) {
       <p>{props.description}</p>
       <address> {props.address}</address>
       <p>{props.phoneNum}</p>
+      <select>
+        <option>{props.diet}</option>
+      </select>
+      <p>
+        Dietary Menu:
+        <input type="checkbox" checked={props.dietaryMenu} readOnly />
+      </p>
       <p className="stars">
         <Link to={`/restaurants/${props.id}`}>
           <span style={{ '--rating': 4.7 }}></span>({props.reviewCount})
@@ -24,7 +31,13 @@ function SingleRestaurantFromList(props) {
 }
 
 export function Restaurant() {
-  const [restaurants, setRestaurants] = useState([])
+  const [restaurants, setRestaurants] = useState([
+    {
+      typeOfFood: '',
+      reviews: [],
+      restaurantDietTypes: [],
+    },
+  ])
 
   const [filterText, setFilterText] = useState('')
 
@@ -50,6 +63,19 @@ export function Restaurant() {
   return (
     <>
       <div className="Restaurants">
+        <select>
+          <option>Vegan</option>
+          <option>Gluten Free</option>
+          <option> Vegetarian</option>
+        </select>
+        <select>
+          <option>Open Early</option>
+          <option>Open Late</option>
+        </select>
+        <select>
+          <option>Comfort</option>
+          <option>Mexican</option>
+        </select>
         <div className="Search">
           <input
             type="Text"
@@ -75,6 +101,8 @@ export function Restaurant() {
                 website={restaurant.website}
                 reviewCount={restaurant.reviews.length}
                 id={restaurant.id}
+                diet={restaurant.restaurantDietTypes}
+                dietaryMenu={restaurant.dietaryMenu}
                 // Should display open late, early, and dietary menu
               />
             )

@@ -1,6 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export function Randomizer() {
+  const [randRestaurants, setRandRestaurants] = useState([])
+
+  const params = useParams()
+
+  let id = Number(params.id)
+
+  useEffect(() => {
+    async function fetchRestaurant() {
+      const randId = Math.floor(Math.random(id))
+      const response = await fetch(`/api/Restaurants/${randId}`)
+      const apiData = await response.json()
+
+      setRandRestaurants(apiData)
+    }
+    fetchRestaurant()
+  }, [id])
+
+  console.log(randRestaurants)
+
   return (
     <>
       <aside>
@@ -9,11 +29,16 @@ export function Randomizer() {
           <option value="Gluten">Gluten Free</option>
           <option value="Veg">Vegetarian</option>
         </select>
-        <input type="text" placeholder="Diet" />
-        <input type="text" placeholder="Hours" />
-        <input type="text" placeholder="Type" />
-        <input type="text" placeholder="Location" />
+        <select>
+          <option>Open Early</option>
+          <option>Open Late</option>
+        </select>
+        <select>
+          <option>Mexican</option>
+          <option>Comfort</option>
+        </select>
         <footer>
+          {/* Need to create a random Link */}
           <button className="Random">Randomizer</button>
         </footer>
       </aside>
