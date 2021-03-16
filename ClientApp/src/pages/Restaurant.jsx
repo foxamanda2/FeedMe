@@ -11,9 +11,9 @@ function SingleRestaurantFromList(props) {
       <p>{props.description}</p>
       <address> {props.address}</address>
       <p>{props.phoneNum}</p>
-      <select>
+      {/* <select>
         <option>{props.diet}</option>
-      </select>
+      </select> */}
       <p>
         Dietary Menu:
         <input type="checkbox" checked={props.dietaryMenu} readOnly />
@@ -32,12 +32,14 @@ function SingleRestaurantFromList(props) {
 
 export function Restaurant() {
   const [restaurants, setRestaurants] = useState([
-    {
-      typeOfFood: '',
-      reviews: [],
-      restaurantDietTypes: [],
-    },
+    // {
+    //   typeOfFood: '',
+    //   reviews: [],
+    //   restaurantDietTypes: [],
+    // },
   ])
+
+  const [dietTypes, setDietTypes] = useState([])
 
   const [filterText, setFilterText] = useState('')
 
@@ -60,13 +62,28 @@ export function Restaurant() {
     fetchRestaurants()
   }, [filterText])
 
+  useEffect(() => {
+    async function fetchDietType() {
+      const url = '/api/DietTypes'
+
+      const response = await fetch(url)
+      const json = await response.json()
+
+      setDietTypes(json)
+    }
+
+    fetchDietType()
+  }, [])
+
+  console.log(restaurants)
+
   return (
     <>
       <div className="Restaurants">
         <select>
-          <option>Vegan</option>
-          <option>Gluten Free</option>
-          <option> Vegetarian</option>
+          {dietTypes.map(function (diet) {
+            return <option key={diet.Id}>{diet.diet}</option>
+          })}
         </select>
         <select>
           <option>Open Early</option>
@@ -101,8 +118,8 @@ export function Restaurant() {
                 website={restaurant.website}
                 reviewCount={restaurant.reviews.length}
                 id={restaurant.id}
-                diet={restaurant.restaurantDietTypes}
                 dietaryMenu={restaurant.dietaryMenu}
+                // diet={restaurant.restaurantDietTypes.dietTypes}
                 // Should display open late, early, and dietary menu
               />
             )

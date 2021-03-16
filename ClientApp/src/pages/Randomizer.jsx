@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+// function RandomRest(props) {
+//   return (
+//     <section className="RandomRest">
+//       <a href="https://farmacyvegankitchen.com/?utm_source=GMBlisting&utm_medium=organic">
+//         <h2>{props.name}</h2>
+//       </a>
+//       <p>$$</p>
+//       <p>
+//         This urban spot serves all kinds of all vegan comfort food. From mac and
+//         cheese to a philly cheese steak made from impossible meat, you are sure
+//         to find something delicious.
+//       </p>
+//       <address> 803 N Tampa St, Tampa, Florida 33602</address>
+//       <p>(786) 681-1644</p>
+//       <p>Hours: 11am-4pm</p>
+//       <div className="stars">
+//         <span style={{ '--rating': 4.7 }}></span>(2)
+//       </div>
+//     </section>
+//   )
+// }
 export function Randomizer() {
-  const [randRestaurants, setRandRestaurants] = useState([])
+  const [randRestaurant, setRandRestaurants] = useState([])
+
+  const [dietTypes, setDietTypes] = useState([])
 
   const params = useParams()
 
@@ -10,8 +33,7 @@ export function Randomizer() {
 
   useEffect(() => {
     async function fetchRestaurant() {
-      const randId = Math.floor(Math.random(id))
-      const response = await fetch(`/api/Restaurants/${randId}`)
+      const response = await fetch(`/api/Restaurants/random`)
       const apiData = await response.json()
 
       setRandRestaurants(apiData)
@@ -19,15 +41,28 @@ export function Randomizer() {
     fetchRestaurant()
   }, [id])
 
-  console.log(randRestaurants)
+  useEffect(() => {
+    async function fetchDietType() {
+      const url = '/api/DietTypes'
+
+      const response = await fetch(url)
+      const json = await response.json()
+
+      setDietTypes(json)
+    }
+
+    fetchDietType()
+  }, [])
+
+  console.log(randRestaurant)
 
   return (
     <>
       <aside>
-        <select className="Diet">
-          <option value="Vegan">Vegan</option>
-          <option value="Gluten">Gluten Free</option>
-          <option value="Veg">Vegetarian</option>
+        <select>
+          {dietTypes.map(function (diet) {
+            return <option key={diet.Id}>{diet.diet}</option>
+          })}
         </select>
         <select>
           <option>Open Early</option>
@@ -39,30 +74,32 @@ export function Randomizer() {
         </select>
         <footer>
           {/* Need to create a random Link */}
-          <button className="Random">Randomizer</button>
+          <button
+            className="Random"
+            // onClick={function (event) {
+            //   setDietTypes()
+            // }}
+          >
+            Randomizer
+          </button>
         </footer>
       </aside>
 
-      <section className="RandomRest">
-        <a href="https://farmacyvegankitchen.com/?utm_source=GMBlisting&utm_medium=organic">
-          <h2>Farmacy Vegan Kitchen + Bakery</h2>
-        </a>
-        <p>$$</p>
-        <p>
-          This urban spot serves all kinds of all vegan comfort food. From mac
-          and cheese to a philly cheese steak made from impossible meat, you are
-          sure to find something delicious.
-        </p>
-        <address> 803 N Tampa St, Tampa, Florida 33602</address>
-        <p>(786) 681-1644</p>
-        <p>Hours: 11am-4pm</p>
+      <section className="RandomRest" key={randRestaurant.id}>
+        {/* <a {randRestaurant.website}> */}
+        <h2>{randRestaurant.name}</h2>
+        {/* </a> */}
+        <p>{randRestaurant.priceRange}</p>
+        <p>{randRestaurant.description}</p>
+        <address> {randRestaurant.address}</address>
+        <p>{randRestaurant.phoneNum}</p>
         <div className="stars">
           <span style={{ '--rating': 4.7 }}></span>(2)
         </div>
       </section>
-      <article>
+      {/* <article>
         <p className="Map">Map</p>
-      </article>
+      </article> */}
       {/* <footer>
         <Link to="/">Go Home</Link>
       </footer> */}

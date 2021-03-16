@@ -33,30 +33,28 @@ namespace FeedMe.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter)
         {
-           if (filter == null)
+            if (filter == null)
             {
-                // Uses the database context in `_context` to request all of the Restaurants, sort
-                // them by row id and return them as a JSON array.
                 return await _context.Restaurants.
                 OrderBy(row => row.Id).
-                Include(restaurant =>restaurant.Reviews).
-                // Include(restaurant =>restaurant.RestaurantDietTypes).
-                // Dont forget to add diets
+                Include(restaurant => restaurant.Reviews).
+                Include(restaurant => restaurant.RestaurantDietTypes).
+                ThenInclude(restaurantDietType => restaurantDietType.DietType).
                 ToListAsync();
             }
             else
             {
-                // Include first to be able to search Diet (it is review for the time being)
                 return await _context.
                                 Restaurants.
                                 Where(restaurant => restaurant.Name.ToLower().Contains(filter.ToLower())).
                                 OrderBy(row => row.Id).
                                 Include(restaurant => restaurant.Reviews).
+                                Include(restaurant => restaurant.RestaurantDietTypes).
                                 ToListAsync();
 
-                await _context.RestaurantDietTypes.
-                Include(restaurants => restaurants.DietTypes.Diet).
-                ToListAsync();
+                // await _context.RestaurantDietTypes.
+                // Include(restaurants => restaurants.DietTypes.Diet).
+                // ToListAsync();
 
 
 
@@ -66,6 +64,30 @@ namespace FeedMe.Controllers
                 // Include(restaurant =>restaurant.RestaurantDietTypes).
                 // ToListAsync();
             }
+        }
+
+        [HttpGet("random")]
+        // Take in diet type. Where clause to limit restautants
+        public async Task<ActionResult<Restaurant>> RandomRestaurant()
+        {
+            Random randomNumber = new Random();
+            var restaurantCount = _context.Restaurants.Count();
+            // Find the restaurant in the database using `FindAsync` to look it up by id
+            var restaurants = await _context.Restaurants.
+            Include(restaurant => restaurant.Reviews).
+            Skip(randomNumber.Next(restaurantCount)).
+            Take(1).ToListAsync();
+
+
+            // If we didn't find anything, we receive a `null` in return
+            if (restaurants.Count() == 0)
+            {
+                // Return a `404` response to the client indicating we could not find a restaurant with this id
+                return NotFound();
+            }
+
+            //  Return the restaurant as a JSON object.
+            return restaurants[0];
         }
 
         // GET: api/Restaurants/5
@@ -78,7 +100,7 @@ namespace FeedMe.Controllers
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
             // Find the restaurant in the database using `FindAsync` to look it up by id
-            var restaurant = await _context.Restaurants.Include(restaurant =>restaurant.Reviews).Where(restaurant=>restaurant.Id==id).FirstOrDefaultAsync();
+            var restaurant = await _context.Restaurants.Include(restaurant => restaurant.Reviews).Where(restaurant => restaurant.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (restaurant == null)
@@ -90,6 +112,7 @@ namespace FeedMe.Controllers
             //  Return the restaurant as a JSON object.
             return restaurant;
         }
+
 
         // PUT: api/Restaurants/5
         //

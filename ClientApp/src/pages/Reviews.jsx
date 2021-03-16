@@ -6,7 +6,7 @@ export function Reviews() {
 
   console.log(params)
 
-  const [restaurant, setRestaurant] = useState({
+  const [restaurantReview, setRestaurantReview] = useState({
     name: '',
     telephone: '',
     reviews: [
@@ -24,7 +24,7 @@ export function Reviews() {
       const response = await fetch(`/api/Restaurants/${id}`)
       const apiData = await response.json()
 
-      setRestaurant(apiData)
+      setRestaurantReview(apiData)
     }
     fetchRestaurant()
   }, [id])
@@ -32,13 +32,22 @@ export function Reviews() {
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
   return (
     <>
-      <h1>{restaurant.name}</h1>
-      <div className="stars">
-        <span style={{ '--rating': 4.7 }}></span>(2)
-      </div>
-      <p>lipsum asdarhwlkutlkglasgFLJSAGFKAJSGF</p>
-      <p>Paragraph herekjzehfslkajhfsalkhglaskhg</p>
-      <p>Created at: 8237198264</p>
+      <h1>{restaurantReview.name}</h1>
+
+      <ul className="reviews">
+        {restaurantReview.reviews.map(function (review) {
+          return (
+            <li>
+              <div className="stars">
+                <span style={{ '--rating': 4.7 }}></span>(2)
+              </div>
+              <div className="summary">{review.summary}</div>
+              <div className="body">{review.body}</div>
+              <div className="created">{review.created}</div>
+            </li>
+          )
+        })}
+      </ul>
     </>
   )
 }
