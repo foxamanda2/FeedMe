@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import format from 'date-fns/format'
 
 export function Reviews() {
   const params = useParams()
-
-  console.log(params)
 
   const [restaurantReview, setRestaurantReview] = useState({
     name: '',
@@ -32,22 +31,23 @@ export function Reviews() {
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
   return (
     <>
-      <h1>{restaurantReview.name}</h1>
-
-      <ul className="reviews">
-        {restaurantReview.reviews.map(function (review) {
-          return (
-            <li key={review.id}>
-              <div className="stars">
-                <span style={{ '--rating': 4.7 }}></span>(2)
-              </div>
-              <div className="summary">{review.summary}</div>
-              <div className="body">{review.body}</div>
-              <div className="created">{review.created}</div>
-            </li>
-          )
-        })}
-      </ul>
+      <section className="allReviews">
+        <h1>{restaurantReview.name}</h1>
+        <ul className="reviews">
+          {restaurantReview.reviews.map(function (review) {
+            return (
+              <li key={review.id}>
+                <div className="summary">{review.summary}</div>
+                <span className="stars" style={{ '--rating': 4.7 }}>
+                  ({review.stars})
+                </span>
+                <div className="body">{review.body}</div>
+                <time>{format(new Date(review.created), dateFormat)}</time>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
     </>
   )
 }

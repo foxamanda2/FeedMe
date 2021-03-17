@@ -5,7 +5,7 @@ $button-color: rgba(235, 171, 162, 0.76);
 $button-text: rgb(75, 75, 75);
 $accent-color: rgb(196, 151, 146);
 $background-color: #edededc7;
-$modal-color: #ededede7;
+$modal-color: #edededea;
 
 :root {
   font: 16px / 1 sans-serif;
@@ -350,6 +350,38 @@ a :hover {
   text-decoration: none;
 }
 
+// Reviews Page
+.allReviews {
+  list-style: none;
+  text-align: left;
+  h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+ul.reviews {
+  padding: 0px;
+  margin: 10px;
+}
+
+.reviews {
+  list-style: none;
+
+  .summary {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  .body {
+    padding-bottom: 10px;
+  }
+}
+
+.reviews li {
+  margin-top: 20px;
+  background-color: $background-color;
+  border-top: thin solid $accent-color;
+}
+
 // New Review
 .review-modal {
   position: fixed;
@@ -365,12 +397,13 @@ a :hover {
 }
 
 .newReview {
-  background-color: $background-color;
+  background-color: $modal-color;
   width: 80vw;
   height: 60vh;
   border-radius: 1rem;
-  padding: 3rem;
+  padding: 0.5rem;
   padding-top: 15px;
+  border: thin solid $accent-color;
 
   p {
     color: $button-text;
@@ -383,6 +416,8 @@ a :hover {
     justify-content: space-around;
     color: $button-text;
 
+    margin-top: 0px;
+
     textarea {
       background-color: $background-color;
     }
@@ -391,6 +426,7 @@ a :hover {
       padding: 5px;
       border-radius: 2rem;
       width: 10rem;
+      margin-bottom: 4px;
     }
     p.home {
       font-size: 15px;
@@ -398,22 +434,12 @@ a :hover {
       cursor: pointer;
     }
   }
+}
 
-  .rating {
-    display: inline-block;
-  }
-
-  .rating * {
-    float: right;
-  }
-
-  .rating input {
-    font-size: 30px;
-  }
-
-  .rating input:checked ~ label {
-    color: $accent-color;
-  }
+.newReview div {
+  font-size: 15px;
+  color: $button-text;
+  margin-bottom: 2px;
 }
 
 @media only screen and (min-width: 550px) {

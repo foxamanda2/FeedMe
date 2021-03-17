@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { Restaurant } from './Restaurant'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export function NewReviewModal(props) {
   const restaurant = props.restaurant
@@ -22,12 +21,10 @@ export function NewReviewModal(props) {
     setNewReview({ ...newReview, stars: newStars })
   }
 
-  // console.log(restaurant)
-
   async function submitNewReview(event) {
     event.preventDefault()
 
-    const response = await fetch('/api/Reviews', {
+    await fetch('/api/Reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newReview),
@@ -35,8 +32,6 @@ export function NewReviewModal(props) {
 
     props.closeModal()
   }
-
-  console.log(newReview)
 
   return (
     <div className="review-modal">
@@ -62,6 +57,8 @@ export function NewReviewModal(props) {
             onChange={handleNewReviewText}
           />
         </fieldset>
+
+        <div>Stars</div>
 
         <fieldset className="rating">
           <input

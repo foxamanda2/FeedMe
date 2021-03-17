@@ -143,15 +143,6 @@ export function Restaurant() {
               <SingleRestaurantFromList
                 key={restaurant.id}
                 restaurant={restaurant}
-                // name={restaurant.name}
-                // description={restaurant.description}
-                // address={restaurant.address}
-                // phoneNum={restaurant.phoneNum}
-                // website={restaurant.website}
-                // reviewCount={restaurant.reviews.length}
-                // id={restaurant.id}
-                // dietaryMenu={restaurant.dietaryMenu}
-                // idOfRest={restaurant.id}
               />
             )
           })}
