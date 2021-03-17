@@ -12,6 +12,8 @@ INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOf
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (1, '2021-03-12 14:23:55', 'Great Variety', 'This food not only tastes healthy, but it also has a great variety for everyone!', 5);
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (1, '2021-03-12 18:23:55', 'Diet Friendly', 'As soon as you order your food the waiter asks you if you have any dietary restrictions. They do a great job at making their ingridients clear on the menu.', 5);
 
+INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (2, '2021-03-17T14:28:05.760Z', 'Comfort Food', 'I cant wait to go back and try more of their comfort food made with impossible meat. Their mac & chees is to die for.', 5);
+
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (5, '2021-03-17T14:28:05.760Z', 'Great Central Spot', 'This spot has some of the most flavorful sushi you can find! The location has many other options which is always a plus.', 5);
 
 -- VALUES ('Dharma Fine Vittles: Tampa', 'Located inside an modern urban food court this spot is a must try. They have all kinds of gourmet comfort foods. Their mac and cheese is to die for. ', '1910 N Ola Ave Suite 113, Tampa, FL 33602', '(813) 803-9998','Comfort','$$', true, 'https://dharmafinevittles.com/',true, true);

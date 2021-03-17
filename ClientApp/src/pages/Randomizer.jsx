@@ -27,7 +27,7 @@ export function Randomizer() {
   const [dietTypes, setDietTypes] = useState([])
 
   // search Parameters
-  const [selectedDiet, setSelectedDiet] = useState('Vegan')
+  const [selectedDiet, setSelectedDiet] = useState('')
   // const [typeOfFood, setTypeOfFood] = useState('')
 
   const params = useParams()
@@ -66,8 +66,13 @@ export function Randomizer() {
             setSelectedDiet(event.target.value)
           }}
         >
+          <option value="">Diet Type</option>
           {dietTypes.map(function (diet) {
-            return <option key={diet.id}>{diet.diet}</option>
+            return (
+              <option key={diet.id} value={diet.diet}>
+                {diet.diet}
+              </option>
+            )
           })}
         </select>
         <select>

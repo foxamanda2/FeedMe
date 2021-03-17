@@ -59,9 +59,6 @@ export function Restaurant() {
   // const params = useParams()
   // const id = params.id
 
-  console.log(typeOfFood)
-  console.log(selectedDiet)
-
   useEffect(() => {
     async function fetchRestaurants() {
       const url =
@@ -110,6 +107,7 @@ export function Restaurant() {
           })}
         </select>
         <select>
+          <option value="">Hours</option>
           <option value="true">Open Early</option>
           <option value="true">Open Late</option>
         </select>
@@ -119,8 +117,13 @@ export function Restaurant() {
             setTypeOfFood(event.target.value)
           }}
         >
+          <option value="">Type Of Food</option>
           {restaurants.map(function (type) {
-            return <option key={type.id}>{type.typeOfFood}</option>
+            return (
+              <option key={type.id} value={type.typeOfFood}>
+                {type.typeOfFood}
+              </option>
+            )
           })}
         </select>
         <div className="Search">
