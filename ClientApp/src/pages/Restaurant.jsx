@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { NewReview } from './NewReview'
+import { NewReviewModal } from './NewReview'
 
 function SingleRestaurantFromList(props) {
+  const [userPressedNew, setUserPressedNew] = useState(false)
+
+  const restaurant = props.restaurant
+
+  function closeModal() {
+    setUserPressedNew(false)
+  }
+
   return (
-    <li key={props.id}>
-      <a href={props.website}>
-        <h2>{props.name}</h2>
+    <li key={restaurant.id}>
+      <a href={restaurant.website}>
+        <h2>{restaurant.name}</h2>
       </a>
       <p>$$</p>
-      <p>{props.description}</p>
-      <address> {props.address}</address>
-      <p>{props.phoneNum}</p>
+      <p>{restaurant.description}</p>
+      <address> {restaurant.address}</address>
+      <p>{restaurant.phoneNum}</p>
       <p>
         Dietary Menu:
-        <input type="checkbox" checked={props.dietaryMenu} readOnly />
+        <input type="checkbox" checked={restaurant.dietaryMenu} readOnly />
       </p>
       <p className="stars">
-        <Link to={`/restaurants/${props.id}`}>
-          <span style={{ '--rating': 4.7 }}></span>({props.reviewCount})
+        <Link to={`/restaurants/${restaurant.id}`}>
+          <span style={{ '--rating': 4.7 }}></span>({restaurant.reviews.length})
         </Link>
       </p>
-      <NewReview />
+      {userPressedNew ? (
+        <NewReviewModal closeModal={closeModal} restaurant={restaurant} />
+      ) : (
+        <></>
+      )}
+      <button
+        onClick={function (event) {
+          event.preventDefault()
+
+          setUserPressedNew(true)
+        }}
+      >
+        New Review
+      </button>
     </li>
   )
 }
@@ -121,14 +142,16 @@ export function Restaurant() {
             return (
               <SingleRestaurantFromList
                 key={restaurant.id}
-                name={restaurant.name}
-                description={restaurant.description}
-                address={restaurant.address}
-                phoneNum={restaurant.phoneNum}
-                website={restaurant.website}
-                reviewCount={restaurant.reviews.length}
-                id={restaurant.id}
-                dietaryMenu={restaurant.dietaryMenu}
+                restaurant={restaurant}
+                // name={restaurant.name}
+                // description={restaurant.description}
+                // address={restaurant.address}
+                // phoneNum={restaurant.phoneNum}
+                // website={restaurant.website}
+                // reviewCount={restaurant.reviews.length}
+                // id={restaurant.id}
+                // dietaryMenu={restaurant.dietaryMenu}
+                // idOfRest={restaurant.id}
               />
             )
           })}

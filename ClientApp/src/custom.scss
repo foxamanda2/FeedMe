@@ -367,7 +367,7 @@ a :hover {
 .newReview {
   background-color: $background-color;
   width: 80vw;
-  height: 55vh;
+  height: 60vh;
   border-radius: 1rem;
   padding: 3rem;
   padding-top: 15px;
@@ -392,10 +392,27 @@ a :hover {
       border-radius: 2rem;
       width: 10rem;
     }
-    a.home {
+    p.home {
       font-size: 15px;
       text-decoration: underline;
+      cursor: pointer;
     }
+  }
+
+  .rating {
+    display: inline-block;
+  }
+
+  .rating * {
+    float: right;
+  }
+
+  .rating input {
+    font-size: 30px;
+  }
+
+  .rating input:checked ~ label {
+    color: $accent-color;
   }
 }
 

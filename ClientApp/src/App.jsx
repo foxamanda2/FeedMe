@@ -6,7 +6,6 @@ import { Link, Route, Switch } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { NewRestaurant } from './pages/NewRestaurant'
 import { About } from './pages/About'
-import { NewReview } from './pages/NewReview'
 import { Reviews } from './pages/Reviews'
 
 export function App() {
@@ -50,9 +49,6 @@ export function App() {
           </Route>
           <Route exact path="/new">
             <NewRestaurant />
-          </Route>
-          <Route exact path="/newReview/:id">
-            <NewReview />
           </Route>
           <Route exact path="/restaurants/:id">
             <Reviews />

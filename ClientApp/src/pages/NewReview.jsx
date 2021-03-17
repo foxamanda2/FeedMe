@@ -1,35 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { Restaurant } from './Restaurant'
 
-export function NewReviewModal() {
-  const params = useParams()
-  const id = Number(params.id)
-
-  const [restaurant, setRestaurant] = useState({
-    name: '',
-    description: '',
-    address: '',
-    telephone: '',
-    reviews: [],
-  })
+export function NewReviewModal(props) {
+  const restaurant = props.restaurant
 
   const [newReview, setNewReview] = useState({
     summary: '',
     body: '',
     stars: 0,
-    restaurantId: id,
+    restaurantId: restaurant.id,
   })
-
-  useEffect(() => {
-    async function fetchRestaurant() {
-      const response = await fetch(`/api/Restaurants/${id}`)
-      const apiData = await response.json()
-
-      setRestaurant(apiData)
-    }
-
-    fetchRestaurant()
-  }, [id])
 
   function handleNewReviewText(event) {
     const name = event.target.name
@@ -51,12 +32,8 @@ export function NewReviewModal() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newReview),
     })
-    setNewReview({
-      ...newReview,
-      body: '',
-      summary: '',
-      stars: 0,
-    })
+
+    props.closeModal()
   }
 
   console.log(newReview)
@@ -64,7 +41,8 @@ export function NewReviewModal() {
   return (
     <div className="review-modal">
       <form className="newReview">
-        <p>New Review:{restaurant.name}</p>
+        <p>Review:</p>
+        <p>{restaurant.name} </p>
 
         <fieldset>
           <input
@@ -85,13 +63,41 @@ export function NewReviewModal() {
           />
         </fieldset>
 
-        <fieldset>
+        <fieldset className="rating">
           <input
             id="star-rating=1"
             type="radio"
             name="stars"
             checked={newReview.stars === 1}
+            onChange={() => handleStarButton(1)}
+          />
+          <input
+            id="star-rating=2"
+            type="radio"
+            name="stars"
+            checked={newReview.stars === 2}
+            onChange={() => handleStarButton(2)}
+          />
+          <input
+            id="star-rating=3"
+            type="radio"
+            name="stars"
+            checked={newReview.stars === 3}
+            onChange={() => handleStarButton(3)}
+          />
+          <input
+            id="star-rating=4"
+            type="radio"
+            name="stars"
+            checked={newReview.stars === 4}
             onChange={() => handleStarButton(4)}
+          />
+          <input
+            id="star-rating=5"
+            type="radio"
+            name="stars"
+            checked={newReview.stars === 5}
+            onChange={() => handleStarButton(5)}
           />
         </fieldset>
 
@@ -108,29 +114,11 @@ export function NewReviewModal() {
         </fieldset>
 
         <fieldset>
-          <a href="/all">
-            <p className="home">Back</p>
-          </a>
+          <p className="home" onClick={props.closeModal}>
+            Back
+          </p>
         </fieldset>
       </form>
     </div>
-  )
-}
-export function NewReview() {
-  const [userPressedNew, setUserPressedNew] = useState(false)
-
-  return (
-    <>
-      {userPressedNew ? <NewReviewModal /> : <></>}
-      <button
-        onClick={function (event) {
-          event.preventDefault()
-
-          setUserPressedNew(true)
-        }}
-      >
-        New Review Here
-      </button>
-    </>
   )
 }
