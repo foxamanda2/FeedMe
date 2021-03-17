@@ -172,7 +172,7 @@ header {
   // left: 0;
   // right: 0;
   background: linear-gradient(transparent, #ededed);
-  z-index: 9999;
+  z-index: 1;
 }
 
 // Body For Random
@@ -350,13 +350,17 @@ a :hover {
 }
 
 // New Review
-.modal {
+.review-modal {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.411);
+  background-color: rgba(0, 0, 0, 0.658);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 550px) {

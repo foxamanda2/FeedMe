@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 function NewReviewModal(props) {
-  return <div className="modal">You pressed me</div>
+  return <div className="review-modal">You pressed me</div>
 }
 export function NewReview() {
-  const [userPressedNew, setUserPressedNew] = useState(true)
+  const [userPressedNew, setUserPressedNew] = useState(false)
 
   return (
     <>
-      {userPressedNew ? <NewReviewModal /> : <> </>}
+      {userPressedNew ? <NewReviewModal /> : <></>}
       <button
         onClick={function (event) {
           event.preventDefault()
@@ -16,7 +16,7 @@ export function NewReview() {
           setUserPressedNew(true)
         }}
       >
-        New Review
+        New Review Here
       </button>
     </>
   )

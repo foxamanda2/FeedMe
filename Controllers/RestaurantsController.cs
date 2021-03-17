@@ -31,7 +31,7 @@ namespace FeedMe.Controllers
         // Returns a list of all your Restaurants
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, string diet)
         {
             if (filter == null)
             {
@@ -42,6 +42,16 @@ namespace FeedMe.Controllers
                 ThenInclude(restaurantDietType => restaurantDietType.DietType).
                 ToListAsync();
             }
+            // if (diet != null)
+            // {
+            //     return await _context.
+            //                     Restaurants.
+            //                     Where(restaurant => restaurant.RestaurantDietTypes.DietType.Diet.Contains(diet)).
+            //                     OrderBy(row => row.Id).
+            //                     Include(restaurant => restaurant.Reviews).
+            //                     Include(restaurant => restaurant.RestaurantDietTypes).
+            //                     ToListAsync();
+            // }
             else
             {
                 return await _context.

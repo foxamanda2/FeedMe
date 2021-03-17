@@ -16,6 +16,7 @@ export function NewRestaurant() {
   })
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  // const [dietType, setDietType] = useState('')
 
   function handleFieldChange(event) {
     const value = event.target.value
@@ -26,18 +27,18 @@ export function NewRestaurant() {
     setNewRestaurant(updatedRestaurant)
   }
 
-  // 19 min in the lecture
-  // Go into new Rest const updatedRestaurant = { ...newRestaurant, [fieldName]: value }
-  // function handleBoolChange() {
-  //   if ($(this).is(':checked')) {
-  //     $(this).attr('value', 'true');
-  //   } else {
-  //     $(this).attr('value', 'false');
-  //   }
-  // }
+  function handleBoolFunction(event) {
+    let value = event.target.checked
+    const fieldName = event.target.name
 
-  //   $('#checkbox-value').text($('#checkbox1').val());
-  // })
+    console.log(value)
+
+    console.log(fieldName)
+
+    const updatedRestaurant = { ...newRestaurant, [fieldName]: value }
+
+    setNewRestaurant(updatedRestaurant)
+  }
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -70,6 +71,8 @@ export function NewRestaurant() {
     }
   }
 
+  console.log(newRestaurant)
+
   return (
     <>
       <form action="submit" className="NewRest" onSubmit={handleSubmit}>
@@ -87,7 +90,7 @@ export function NewRestaurant() {
 
           {/* Description */}
           <textarea
-            type="text"
+            // type="text"
             placeholder="Description"
             name="description"
             onChange={handleFieldChange}
@@ -96,7 +99,7 @@ export function NewRestaurant() {
 
           {/* Address */}
           <textarea
-            type="text"
+            // type="text"
             placeholder="Address"
             name="address"
             onChange={handleFieldChange}
@@ -146,8 +149,9 @@ export function NewRestaurant() {
           <input
             type="checkbox"
             placeholder="Dietary Menu"
-            name="dietary menu"
-            value={newRestaurant.dietaryMenu}
+            name="dietaryMenu"
+            onChange={handleBoolFunction}
+            checked={newRestaurant.dietaryMenu}
           />
 
           {/* Open Late Bool */}
@@ -155,8 +159,9 @@ export function NewRestaurant() {
           <input
             type="checkbox"
             placeholder="Open Late"
-            name="openlate"
-            value={newRestaurant.openLate}
+            name="openLate"
+            onChange={handleBoolFunction}
+            checked={newRestaurant.openLate}
           />
 
           {/* Open Early Bool */}
@@ -166,8 +171,9 @@ export function NewRestaurant() {
           <input
             type="checkbox"
             placeholder="Open Early"
-            name="openearly"
-            value={newRestaurant.openEarly}
+            name="openEarly"
+            onChange={handleBoolFunction}
+            checked={newRestaurant.openEarly}
           />
         </section>
         <div>

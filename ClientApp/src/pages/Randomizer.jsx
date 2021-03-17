@@ -24,8 +24,11 @@ import { useParams } from 'react-router-dom'
 // }
 export function Randomizer() {
   const [randRestaurant, setRandRestaurants] = useState([])
-
   const [dietTypes, setDietTypes] = useState([])
+
+  // search Parameters
+  const [selectedDiet, setSelectedDiet] = useState('Vegan')
+  // const [typeOfFood, setTypeOfFood] = useState('')
 
   const params = useParams()
 
@@ -54,12 +57,15 @@ export function Randomizer() {
     fetchDietType()
   }, [])
 
-  console.log(randRestaurant)
-
   return (
     <>
       <aside>
-        <select>
+        <select
+          value={selectedDiet}
+          onChange={function (event) {
+            setSelectedDiet(event.target.value)
+          }}
+        >
           {dietTypes.map(function (diet) {
             return <option key={diet.id}>{diet.diet}</option>
           })}

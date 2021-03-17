@@ -31,8 +31,15 @@ export function Restaurant() {
   const [dietTypes, setDietTypes] = useState([])
   const [filterText, setFilterText] = useState('')
 
+  // Search parameters
+  const [selectedDiet, setSelectedDiet] = useState('')
+  const [typeOfFood, setTypeOfFood] = useState('')
+
   // const params = useParams()
   // const id = params.id
+
+  console.log(typeOfFood)
+  console.log(selectedDiet)
 
   useEffect(() => {
     async function fetchRestaurants() {
@@ -66,18 +73,34 @@ export function Restaurant() {
   return (
     <>
       <div className="Restaurants">
-        <select>
+        <select
+          value={selectedDiet}
+          onChange={function (event) {
+            setSelectedDiet(event.target.value)
+          }}
+        >
+          <option value="">Diet Type</option>
           {dietTypes.map(function (diet) {
-            return <option key={diet.id}>{diet.diet}</option>
+            return (
+              <option key={diet.id} value={diet.diet}>
+                {diet.diet}
+              </option>
+            )
           })}
         </select>
         <select>
-          <option>Open Early</option>
-          <option>Open Late</option>
+          <option value="true">Open Early</option>
+          <option value="true">Open Late</option>
         </select>
-        <select>
-          <option>Comfort</option>
-          <option>Mexican</option>
+        <select
+          value={typeOfFood}
+          onChange={function (event) {
+            setTypeOfFood(event.target.value)
+          }}
+        >
+          {restaurants.map(function (type) {
+            return <option key={type.id}>{type.typeOfFood}</option>
+          })}
         </select>
         <div className="Search">
           <input
