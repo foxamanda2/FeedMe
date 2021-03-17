@@ -51,18 +51,6 @@ namespace FeedMe.Controllers
                                 Include(restaurant => restaurant.Reviews).
                                 Include(restaurant => restaurant.RestaurantDietTypes).
                                 ToListAsync();
-
-                // await _context.RestaurantDietTypes.
-                // Include(restaurants => restaurants.DietTypes.Diet).
-                // ToListAsync();
-
-
-
-                // Restaurants.Include(restaurant =>restaurant.RestaurantDietTypes).
-                // Where(restaurant => restaurant.Name.ToLower().Contains(filter.ToLower())|| restaurant.RestaurantDietTypes.Select(DietType=> DietType.DietTypes.Where(diet=> diet.Diet==filter.ToLower()))).
-                // OrderBy(row => row.Id).
-                // Include(restaurant =>restaurant.RestaurantDietTypes).
-                // ToListAsync();
             }
         }
 

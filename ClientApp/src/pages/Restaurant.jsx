@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { NewReview } from './NewReview'
 
 function SingleRestaurantFromList(props) {
   return (
@@ -11,9 +12,6 @@ function SingleRestaurantFromList(props) {
       <p>{props.description}</p>
       <address> {props.address}</address>
       <p>{props.phoneNum}</p>
-      {/* <select>
-        <option>{props.diet}</option>
-      </select> */}
       <p>
         Dietary Menu:
         <input type="checkbox" checked={props.dietaryMenu} readOnly />
@@ -23,24 +21,14 @@ function SingleRestaurantFromList(props) {
           <span style={{ '--rating': 4.7 }}></span>({props.reviewCount})
         </Link>
       </p>
-      <Link to="/newReview">
-        <button>Leave a Review</button>
-      </Link>
+      <NewReview />
     </li>
   )
 }
 
 export function Restaurant() {
-  const [restaurants, setRestaurants] = useState([
-    // {
-    //   typeOfFood: '',
-    //   reviews: [],
-    //   restaurantDietTypes: [],
-    // },
-  ])
-
+  const [restaurants, setRestaurants] = useState([])
   const [dietTypes, setDietTypes] = useState([])
-
   const [filterText, setFilterText] = useState('')
 
   // const params = useParams()
@@ -75,14 +63,12 @@ export function Restaurant() {
     fetchDietType()
   }, [])
 
-  console.log(restaurants)
-
   return (
     <>
       <div className="Restaurants">
         <select>
           {dietTypes.map(function (diet) {
-            return <option key={diet.Id}>{diet.diet}</option>
+            return <option key={diet.id}>{diet.diet}</option>
           })}
         </select>
         <select>
@@ -106,6 +92,7 @@ export function Restaurant() {
             <button>Add Restaurant</button>
           </Link>
         </div>
+
         <ul className="results">
           {restaurants.map(function (restaurant) {
             return (
@@ -119,8 +106,6 @@ export function Restaurant() {
                 reviewCount={restaurant.reviews.length}
                 id={restaurant.id}
                 dietaryMenu={restaurant.dietaryMenu}
-                // diet={restaurant.restaurantDietTypes.dietTypes}
-                // Should display open late, early, and dietary menu
               />
             )
           })}

@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+function NewReviewModal(props) {
+  return <div className="modal">You pressed me</div>
+}
 export function NewReview() {
+  const [userPressedNew, setUserPressedNew] = useState(true)
+
   return (
     <>
-      <p>New Review</p>
-      <textarea type="text" placeholder="Summary" name="Summary" />
+      {userPressedNew ? <NewReviewModal /> : <> </>}
+      <button
+        onClick={function (event) {
+          event.preventDefault()
 
-      <textarea type="text" placeholder="Review Body" name="Review Body" />
-      <p>Created at:</p>
+          setUserPressedNew(true)
+        }}
+      >
+        New Review
+      </button>
     </>
   )
 }

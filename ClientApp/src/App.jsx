@@ -15,26 +15,28 @@ export function App() {
       <div className="AppBody">
         <header>
           <p className="AppName">Feed Me</p>
-          <nav>
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/all">Restaurants</Link>
-              </li>
-              <li>
-                <Link to="/random">Randomizer</Link>
-              </li>
-              <li>
-                <Link to="/about">Our Table</Link>
-              </li>
-            </ul>
-          </nav>
+          <div className="navigation">
+            <nav>
+              <input type="checkbox" />
+              <span></span>
+              <span></span>
+              <span></span>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/all">Restaurants</Link>
+                </li>
+                <li>
+                  <Link to="/random">Randomizer</Link>
+                </li>
+                <li>
+                  <Link to="/about">Our Table</Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </header>
         <Switch>
           <Route exact path="/">

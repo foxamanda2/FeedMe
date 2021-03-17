@@ -61,7 +61,7 @@ export function Randomizer() {
       <aside>
         <select>
           {dietTypes.map(function (diet) {
-            return <option key={diet.Id}>{diet.diet}</option>
+            return <option key={diet.id}>{diet.diet}</option>
           })}
         </select>
         <select>

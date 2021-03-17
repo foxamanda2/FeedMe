@@ -37,7 +37,7 @@ export function Reviews() {
       <ul className="reviews">
         {restaurantReview.reviews.map(function (review) {
           return (
-            <li>
+            <li key={review.id}>
               <div className="stars">
                 <span style={{ '--rating': 4.7 }}></span>(2)
               </div>

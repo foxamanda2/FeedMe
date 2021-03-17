@@ -27,6 +27,7 @@ export function NewRestaurant() {
   }
 
   // 19 min in the lecture
+  // Go into new Rest const updatedRestaurant = { ...newRestaurant, [fieldName]: value }
   // function handleBoolChange() {
   //   if ($(this).is(':checked')) {
   //     $(this).attr('value', 'true');
