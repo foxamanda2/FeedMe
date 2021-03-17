@@ -51,7 +51,7 @@ export function App() {
           <Route exact path="/new">
             <NewRestaurant />
           </Route>
-          <Route exact path="/newReview">
+          <Route exact path="/newReview/:id">
             <NewReview />
           </Route>
           <Route exact path="/restaurants/:id">

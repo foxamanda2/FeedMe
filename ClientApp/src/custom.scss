@@ -5,6 +5,7 @@ $button-color: rgba(235, 171, 162, 0.76);
 $button-text: rgb(75, 75, 75);
 $accent-color: rgb(196, 151, 146);
 $background-color: #edededc7;
+$modal-color: #ededede7;
 
 :root {
   font: 16px / 1 sans-serif;
@@ -366,7 +367,7 @@ a :hover {
 .newReview {
   background-color: $background-color;
   width: 80vw;
-  height: 60vh;
+  height: 55vh;
   border-radius: 1rem;
   padding: 3rem;
   padding-top: 15px;
@@ -381,6 +382,10 @@ a :hover {
     display: flex;
     justify-content: space-around;
     color: $button-text;
+
+    textarea {
+      background-color: $background-color;
+    }
 
     .submit {
       padding: 5px;
