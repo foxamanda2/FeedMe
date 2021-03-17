@@ -363,6 +363,37 @@ a :hover {
   align-items: center;
 }
 
+.newReview {
+  background-color: $background-color;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 1rem;
+  padding: 3rem;
+  padding-top: 15px;
+
+  p {
+    color: $button-text;
+    font-size: 20px;
+  }
+
+  fieldset {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-around;
+    color: $button-text;
+
+    .submit {
+      padding: 5px;
+      border-radius: 2rem;
+      width: 10rem;
+    }
+    a.home {
+      font-size: 15px;
+      text-decoration: underline;
+    }
+  }
+}
+
 @media only screen and (min-width: 550px) {
   body {
     background-size: cover;
