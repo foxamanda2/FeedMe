@@ -16,6 +16,11 @@ function SingleRestaurantFromList(props) {
       <a href={restaurant.website}>
         <h2>{restaurant.name}</h2>
       </a>
+      <p>
+        <Link className="button" to={`/restaurants/${restaurant.id}/edit`}>
+          Edit
+        </Link>
+      </p>
       <p>$$</p>
       <p>{restaurant.description}</p>
       <address> {restaurant.address}</address>
