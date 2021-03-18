@@ -54,7 +54,7 @@ export function Reviews() {
             return (
               <li key={reviews.id}>
                 <div className="summary">{reviews.summary}</div>
-                <span className="stars" style={{ '--rating': 4.7 }}>
+                <span className="stars" style={{ '--rating': reviews.stars }}>
                   ({reviews.stars})
                 </span>
                 <div className="body">{reviews.body}</div>

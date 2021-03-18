@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { Stars } from '../components/Stars'
 
 export function Randomizer() {
   const [randRestaurant, setRandRestaurants] = useState({
@@ -100,12 +101,9 @@ export function Randomizer() {
         <p>{randRestaurant.description}</p>
         <address> {randRestaurant.address}</address>
         <p>{randRestaurant.phoneNum}</p>
-        <div className="stars">
-          <Link to={`/restaurants/${randRestaurant.id}`}>
-            <span style={{ '--rating': 4.7 }}></span>
-            {randRestaurant.reviews.length}
-          </Link>
-        </div>
+        <Link to={`/restaurants/${randRestaurant.id}`}>
+          <Stars restaurant={randRestaurant} />
+        </Link>
       </section>
     </>
   )

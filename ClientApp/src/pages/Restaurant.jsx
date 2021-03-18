@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NewReviewModal } from './NewReview'
+import { Stars } from '../components/Stars'
 
 function SingleRestaurantFromList(props) {
   const [userPressedNew, setUserPressedNew] = useState(false)
@@ -16,29 +17,26 @@ function SingleRestaurantFromList(props) {
       <a href={restaurant.website}>
         <h2>{restaurant.name}</h2>
       </a>
-      <p>
-        <Link className="button" to={`/restaurants/${restaurant.id}/edit`}>
-          Edit
-        </Link>
-      </p>
       <p>$$</p>
       <p>{restaurant.description}</p>
       <address> {restaurant.address}</address>
       <p>{restaurant.phoneNum}</p>
+
       <p>
         Dietary Menu:
         <input type="checkbox" checked={restaurant.dietaryMenu} readOnly />
       </p>
-      <p className="stars">
-        <Link to={`/restaurants/${restaurant.id}`}>
-          <span style={{ '--rating': 4.7 }}></span>({restaurant.reviews.length})
-        </Link>
-      </p>
+
+      <Link to={`/restaurants/${restaurant.id}`}>
+        <Stars restaurant={restaurant} />
+      </Link>
+
       {userPressedNew ? (
         <NewReviewModal closeModal={closeModal} restaurant={restaurant} />
       ) : (
         <></>
       )}
+
       <button
         onClick={function (event) {
           event.preventDefault()
@@ -47,6 +45,10 @@ function SingleRestaurantFromList(props) {
         }}
       >
         New Review
+      </button>
+
+      <button className="editButton">
+        <Link to={`/restaurants/${restaurant.id}/edit`}>Update</Link>
       </button>
     </li>
   )
@@ -111,11 +113,13 @@ export function Restaurant() {
             )
           })}
         </select>
+
         <select>
           <option value="">Hours</option>
           <option value="true">Open Early</option>
           <option value="true">Open Late</option>
         </select>
+
         <select
           value={typeOfFood}
           onChange={function (event) {
@@ -131,6 +135,7 @@ export function Restaurant() {
             )
           })}
         </select>
+
         <div className="Search">
           <input
             type="Text"
@@ -140,6 +145,7 @@ export function Restaurant() {
               setFilterText(event.target.value)
             }}
           />
+
           <Link to="/new">
             <button>Add Restaurant</button>
           </Link>
