@@ -474,6 +474,15 @@ ul.reviews {
   margin-bottom: 2px;
 }
 
+// About Me
+div.about {
+  margin: 0px auto;
+}
+img {
+  height: 13rem;
+  margin: 0px auto;
+}
+
 @media only screen and (min-width: 550px) {
   body {
     background-size: cover;

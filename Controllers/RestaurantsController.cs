@@ -31,37 +31,27 @@ namespace FeedMe.Controllers
         // Returns a list of all your Restaurants
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, string diet)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, int dietTypeId, string openEarlyOrLate, string typeOfFood)
         {
-            if (filter == null)
-            {
-                return await _context.Restaurants.
-                OrderBy(row => row.Id).
-                Include(restaurant => restaurant.Reviews).
-                Include(restaurant => restaurant.RestaurantDietTypes).
-                ThenInclude(restaurantDietType => restaurantDietType.DietType).
-                ToListAsync();
-            }
-            // if (diet != null)
-            // {
-            //     return await _context.
-            //                     Restaurants.
-            //                     Where(restaurant => restaurant.RestaurantDietTypes.DietType.Diet.Contains(diet)).
-            //                     OrderBy(row => row.Id).
-            //                     Include(restaurant => restaurant.Reviews).
-            //                     Include(restaurant => restaurant.RestaurantDietTypes).
-            //                     ToListAsync();
+            var matchingDiet = await _context.Restaurants.
+                                            Include(restaurant => restaurant.Reviews).
+                                            Include(restaurant => restaurant.RestaurantDietTypes).
+                                            ThenInclude(restaurantDietType => restaurantDietType.DietType).
+                                            Join(_context.RestaurantDietTypes,
+                                                                    restaurant => restaurant.Id,
+                                                                    restaurantDietType => restaurantDietType.RestaurantId,
+                                                                    (restaurant, restaurantDietType) => new { Id = restaurant.Id, Restaurant = restaurant, RestaurantDietType = restaurantDietType }).
+                                            Where(restaurantAndRestaurantDietType => (
+                                                (filter == null || restaurantAndRestaurantDietType.Restaurant.Name.ToLower().Contains(filter.ToLower()))
+                                                &&
+                                                (dietTypeId == 0 || restaurantAndRestaurantDietType.RestaurantDietType.DietTypeId == dietTypeId)
+
+                                            )).
+                                            Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).
+                                            ToListAsync();
+
+            return Ok(matchingDiet);
             // }
-            else
-            {
-                return await _context.
-                                Restaurants.
-                                Where(restaurant => restaurant.Name.ToLower().Contains(filter.ToLower())).
-                                OrderBy(row => row.Id).
-                                Include(restaurant => restaurant.Reviews).
-                                Include(restaurant => restaurant.RestaurantDietTypes).
-                                ToListAsync();
-            }
         }
 
         [HttpGet("random")]

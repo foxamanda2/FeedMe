@@ -60,27 +60,43 @@ export function Restaurant() {
   const [filterText, setFilterText] = useState('')
 
   // Search parameters
-  const [selectedDiet, setSelectedDiet] = useState('')
+  const [selectedDietTypeId, setSelectedDietTypeId] = useState(0)
   const [typeOfFood, setTypeOfFood] = useState('')
 
   // const params = useParams()
   // const id = params.id
 
+  console.log(selectedDietTypeId)
+
   useEffect(() => {
     async function fetchRestaurants() {
-      const url =
-        filterText.length === 0
-          ? '/api/Restaurants'
-          : `/api/Restaurants?filter=${filterText}`
+      let url = '/api/Restaurants'
+      // const url =
+      //   filterText.length === 0
+      //     ? '/api/Restaurants'
+      //     : `/api/Restaurants?filter=${filterText}`
+
+      url += `?filter=${filterText}`
+      url += `&dietTypeId=${selectedDietTypeId}`
 
       const response = await fetch(url)
       const json = await response.json()
 
-      setRestaurants(json)
+      const uniqueRestaurants = Object.values(
+        json.reduce(
+          (result, restaurant) =>
+            Object.keys(result).includes(restaurant.id)
+              ? result
+              : { ...result, [restaurant.id]: restaurant },
+          {}
+        )
+      )
+
+      setRestaurants(uniqueRestaurants)
     }
 
     fetchRestaurants()
-  }, [filterText])
+  }, [filterText, selectedDietTypeId])
 
   useEffect(() => {
     async function fetchDietType() {
@@ -95,19 +111,27 @@ export function Restaurant() {
     fetchDietType()
   }, [])
 
+  console.log(restaurants)
+
+  const typesOfFood = [
+    ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
+  ]
+
+  console.log(typesOfFood)
+
   return (
     <>
       <div className="Restaurants">
         <select
-          value={selectedDiet}
+          value={selectedDietTypeId}
           onChange={function (event) {
-            setSelectedDiet(event.target.value)
+            setSelectedDietTypeId(Number(event.target.value))
           }}
         >
           <option value="">Diet Type</option>
           {dietTypes.map(function (diet) {
             return (
-              <option key={diet.id} value={diet.diet}>
+              <option key={diet.id} value={diet.id}>
                 {diet.diet}
               </option>
             )
@@ -116,8 +140,8 @@ export function Restaurant() {
 
         <select>
           <option value="">Hours</option>
-          <option value="true">Open Early</option>
-          <option value="true">Open Late</option>
+          <option value="openEarly">Open Early</option>
+          <option value="openLate">Open Late</option>
         </select>
 
         <select
@@ -127,10 +151,10 @@ export function Restaurant() {
           }}
         >
           <option value="">Type Of Food</option>
-          {restaurants.map(function (type) {
+          {typesOfFood.map(function (typeOfFood) {
             return (
-              <option key={type.id} value={type.typeOfFood}>
-                {type.typeOfFood}
+              <option key={typeOfFood} value={typeOfFood}>
+                {typeOfFood}
               </option>
             )
           })}

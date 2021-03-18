@@ -71,8 +71,6 @@ export function NewRestaurant() {
     }
   }
 
-  console.log(newRestaurant)
-
   return (
     <>
       <form action="submit" className="NewRest" onSubmit={handleSubmit}>
