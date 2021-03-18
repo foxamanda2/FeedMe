@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import format from 'date-fns/format'
 
 export function Reviews() {
   const params = useParams()
+
+  const history = useHistory()
 
   const [restaurantReview, setRestaurantReview] = useState({
     name: '',
@@ -28,6 +30,19 @@ export function Reviews() {
     fetchRestaurant()
   }, [id])
 
+  async function handleDeleteReview(event, reviewId) {
+    event.preventDefault()
+
+    const response = await fetch(`/api/Reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+    })
+
+    if (response.status === 200 || response.status === 204) {
+      history.push('/')
+    }
+  }
+
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
 
   return (
@@ -48,6 +63,11 @@ export function Reviews() {
                 ) : (
                   <div>{reviews.created}</div>
                 )}
+                <button
+                  onClick={(event) => handleDeleteReview(event, reviews.id)}
+                >
+                  Delete
+                </button>
               </li>
             )
           })}

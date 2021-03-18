@@ -181,7 +181,7 @@ input {
   margin: 5px;
   width: 130px;
   text-align: center;
-  background-color: #edededb2;
+  background-color: $background-color;
   margin-top: 20px;
 }
 
@@ -189,7 +189,7 @@ aside {
   text-align: center;
   margin: 0px auto;
   select {
-    background-color: #edededb2;
+    background-color: $background-color;
   }
 }
 
@@ -203,7 +203,7 @@ button.Random {
 
 section.RandomRest {
   text-align: center;
-  background-color: #edededab;
+  background-color: $background-color;
   p,
   address {
     font-size: 15px;
