@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export function NewRestaurant() {
   const [newRestaurant, setNewRestaurant] = useState({
-    name: '',
-    description: '',
-    address: '',
-    phoneNum: '',
-    typeOfFood: '',
-    priceRange: '',
+    name: 'Place',
+    description: 'Here',
+    address: 'To',
+    phoneNum: 'Eat',
+    typeOfFood: 'Food',
+    priceRange: 'Here',
     dietaryMenu: false,
-    website: '',
+    website: 'Now',
     openLate: false,
     openEarly: false,
   })
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  // const [dietType, setDietType] = useState('')
 
+  const [dietTypes, setDietTypes] = useState([])
+
+  const [selectedDietTypeIds, setSelectedDietTypeIds] = useState([])
+
+  // Functions and fetch for restaurant
   function handleFieldChange(event) {
     const value = event.target.value
     const fieldName = event.target.name
@@ -40,7 +44,7 @@ export function NewRestaurant() {
     setNewRestaurant(updatedRestaurant)
   }
 
-  async function handleSubmit(event) {
+  async function handleNewRestaurantSubmit(event) {
     event.preventDefault()
 
     const response = await fetch('/api/Restaurants', {
@@ -48,12 +52,26 @@ export function NewRestaurant() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newRestaurant),
     })
-
     const json = await response.json()
 
+    // Reset the form
     if (response.status === 400) {
       setErrorMessage(Object.values(json.errors).join(' '))
     } else {
+      const promises = selectedDietTypeIds.map(function (dietTypeId) {
+        // Here is where we send a post to the api
+        return fetch('/api/RestaurantDietTypes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            restaurantId: json.id,
+            dietTypeId: dietTypeId,
+          }),
+        })
+      })
+
+      Promise.all(promises)
+
       setNewRestaurant({
         name: '',
         description: '',
@@ -71,9 +89,54 @@ export function NewRestaurant() {
     }
   }
 
+  // Funtions and fetch for Restaurant Diet Type
+  // async function submitNewRestaurantDietType(event) {
+  //   event.preventDefault()
+
+  //   await fetch('/api/RestaurantDietType', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(restaurantDietType),
+  //   })
+  // }
+
+  console.log(newRestaurant)
+
+  // Functions and fetch for Diet Type
+
+  useEffect(() => {
+    async function fetchDietTypes() {
+      const url = '/api/DietTypes'
+
+      const response = await fetch(url)
+      const json = await response.json()
+
+      setDietTypes(json)
+    }
+
+    fetchDietTypes()
+  }, [])
+
+  function handleDietFunction(event) {
+    let value = event.target.value
+    const fieldName = event.target.name
+
+    console.log(value)
+
+    console.log(fieldName)
+
+    const updatedRestaurant = { ...newRestaurant, [fieldName]: value }
+
+    setNewRestaurant(updatedRestaurant)
+  }
+
   return (
     <>
-      <form action="submit" className="NewRest" onSubmit={handleSubmit}>
+      <form
+        action="submit"
+        className="NewRest"
+        onSubmit={handleNewRestaurantSubmit}
+      >
         {errorMessage && <p className="error">{errorMessage}</p>}
         <h2>Add A New Restaurant</h2>
         <section className="TextField">
@@ -174,6 +237,33 @@ export function NewRestaurant() {
             checked={newRestaurant.openEarly}
           />
         </section>
+
+        <section>
+          {dietTypes.map(function (diet) {
+            return (
+              <>
+                <input
+                  key={diet.id}
+                  // value={diet.id}
+                  checked={selectedDietTypeIds.includes(diet.id)}
+                  type="checkbox"
+                  name="dietType"
+                  onChange={function (event) {
+                    if (event.target.checked) {
+                      setSelectedDietTypeIds([...selectedDietTypeIds, diet.id])
+                    } else {
+                      setSelectedDietTypeIds(
+                        selectedDietTypeIds.filter((id) => id != diet.id)
+                      )
+                    }
+                  }}
+                />
+                {diet.diet}
+              </>
+            )
+          })}
+        </section>
+
         <div>
           <button type="submit" value="Submit">
             Submit

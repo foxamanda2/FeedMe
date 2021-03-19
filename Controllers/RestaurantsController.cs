@@ -50,8 +50,7 @@ namespace FeedMe.Controllers
                                             Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).
                                             ToListAsync();
 
-            return Ok(matchingDiet);
-            // }
+            return matchingDiet;
         }
 
         [HttpGet("random")]
@@ -63,6 +62,8 @@ namespace FeedMe.Controllers
             // Find the restaurant in the database using `FindAsync` to look it up by id
             var restaurants = await _context.Restaurants.
             Include(restaurant => restaurant.Reviews).
+            Include(restaurant => restaurant.RestaurantDietTypes).
+            ThenInclude(restaurantDietType => restaurantDietType.DietType).
             Skip(randomNumber.Next(restaurantCount)).
             Take(1).ToListAsync();
 
@@ -88,7 +89,11 @@ namespace FeedMe.Controllers
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
             // Find the restaurant in the database using `FindAsync` to look it up by id
-            var restaurant = await _context.Restaurants.Include(restaurant => restaurant.Reviews).Where(restaurant => restaurant.Id == id).FirstOrDefaultAsync();
+            var restaurant = await _context.Restaurants.
+                                                    Include(restaurant => restaurant.Reviews).
+                                                    Include(restaurant => restaurant.RestaurantDietTypes).
+                                                    ThenInclude(restaurantDietType => restaurantDietType.DietType).
+                                                    Where(restaurant => restaurant.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (restaurant == null)
