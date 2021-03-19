@@ -14,22 +14,21 @@ export function EditRestaurant() {
     phoneNum: '',
     typeOfFood: '',
     priceRange: '',
-    dietaryMenu: null,
+    dietaryMenu: false,
     website: '',
-    openLate: null,
-    openEarly: null,
+    openLate: false,
+    openEarly: false,
   })
 
   useEffect(() => {
+    const fetchRestaurant = async () => {
+      const response = await fetch(`/api/Restaurants/${id}`)
+      const apiData = await response.json()
+
+      setRestaurant(apiData)
+    }
     fetchRestaurant()
   }, [id])
-
-  const fetchRestaurant = async () => {
-    const response = await fetch(`/api/Restaurants/${id}`)
-    const apiData = await response.json()
-
-    setRestaurant(apiData)
-  }
 
   function handleStringChange(event) {
     const value = event.target.value

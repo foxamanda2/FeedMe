@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 export function NewRestaurant() {
   const [newRestaurant, setNewRestaurant] = useState({
-    name: 'Place',
-    description: 'Here',
-    address: 'To',
-    phoneNum: 'Eat',
-    typeOfFood: 'Food',
-    priceRange: 'Here',
+    name: '',
+    description: '',
+    address: '',
+    phoneNum: '',
+    typeOfFood: '',
+    priceRange: '',
     dietaryMenu: false,
-    website: 'Now',
+    website: '',
     openLate: false,
     openEarly: false,
   })
@@ -89,17 +89,6 @@ export function NewRestaurant() {
     }
   }
 
-  // Funtions and fetch for Restaurant Diet Type
-  // async function submitNewRestaurantDietType(event) {
-  //   event.preventDefault()
-
-  //   await fetch('/api/RestaurantDietType', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(restaurantDietType),
-  //   })
-  // }
-
   console.log(newRestaurant)
 
   // Functions and fetch for Diet Type
@@ -116,19 +105,6 @@ export function NewRestaurant() {
 
     fetchDietTypes()
   }, [])
-
-  function handleDietFunction(event) {
-    let value = event.target.value
-    const fieldName = event.target.name
-
-    console.log(value)
-
-    console.log(fieldName)
-
-    const updatedRestaurant = { ...newRestaurant, [fieldName]: value }
-
-    setNewRestaurant(updatedRestaurant)
-  }
 
   return (
     <>
@@ -241,9 +217,8 @@ export function NewRestaurant() {
         <section>
           {dietTypes.map(function (diet) {
             return (
-              <>
+              <React.Fragment key={diet.id}>
                 <input
-                  key={diet.id}
                   // value={diet.id}
                   checked={selectedDietTypeIds.includes(diet.id)}
                   type="checkbox"
@@ -253,13 +228,13 @@ export function NewRestaurant() {
                       setSelectedDietTypeIds([...selectedDietTypeIds, diet.id])
                     } else {
                       setSelectedDietTypeIds(
-                        selectedDietTypeIds.filter((id) => id != diet.id)
+                        selectedDietTypeIds.filter((id) => id !== diet.id)
                       )
                     }
                   }}
                 />
                 {diet.diet}
-              </>
+              </React.Fragment>
             )
           })}
         </section>

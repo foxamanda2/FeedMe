@@ -10,13 +10,7 @@ export function Reviews() {
   const [restaurantReview, setRestaurantReview] = useState({
     name: '',
     telephone: '',
-    reviews: [
-      {
-        summary: '',
-        body: '',
-        stars: '',
-      },
-    ],
+    reviews: [],
   })
   const id = Number(params.id)
 

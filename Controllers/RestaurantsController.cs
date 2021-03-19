@@ -37,14 +37,16 @@ namespace FeedMe.Controllers
                                             Include(restaurant => restaurant.Reviews).
                                             Include(restaurant => restaurant.RestaurantDietTypes).
                                             ThenInclude(restaurantDietType => restaurantDietType.DietType).
-                                            Join(_context.RestaurantDietTypes,
-                                                                    restaurant => restaurant.Id,
-                                                                    restaurantDietType => restaurantDietType.RestaurantId,
+                                            SelectMany(restaurant => _context.RestaurantDietTypes.Where(restaurantDietType => restaurantDietType.RestaurantId == restaurant.Id).DefaultIfEmpty(),
                                                                     (restaurant, restaurantDietType) => new { Id = restaurant.Id, Restaurant = restaurant, RestaurantDietType = restaurantDietType }).
                                             Where(restaurantAndRestaurantDietType => (
                                                 (filter == null || restaurantAndRestaurantDietType.Restaurant.Name.ToLower().Contains(filter.ToLower()))
                                                 &&
                                                 (dietTypeId == 0 || restaurantAndRestaurantDietType.RestaurantDietType.DietTypeId == dietTypeId)
+                                                &&
+                                                (typeOfFood == null || restaurantAndRestaurantDietType.Restaurant.TypeOfFood.ToLower().Contains(typeOfFood.ToLower()))
+                                                &&
+                                                (openEarlyOrLate == null || restaurantAndRestaurantDietType.Restaurant.OpenEarly == true || restaurantAndRestaurantDietType.Restaurant.OpenLate == true)
 
                                             )).
                                             Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).

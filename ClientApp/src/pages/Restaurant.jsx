@@ -62,9 +62,7 @@ export function Restaurant() {
   // Search parameters
   const [selectedDietTypeId, setSelectedDietTypeId] = useState(0)
   const [typeOfFood, setTypeOfFood] = useState('')
-
-  // const params = useParams()
-  // const id = params.id
+  const [openEarlyOrLate, setOpenEarlyOrLate] = useState(false)
 
   console.log(selectedDietTypeId)
 
@@ -78,6 +76,7 @@ export function Restaurant() {
 
       url += `?filter=${filterText}`
       url += `&dietTypeId=${selectedDietTypeId}`
+      url += `&typeOfFood=${typeOfFood}`
 
       const response = await fetch(url)
       const json = await response.json()
@@ -96,7 +95,7 @@ export function Restaurant() {
     }
 
     fetchRestaurants()
-  }, [filterText, selectedDietTypeId])
+  }, [filterText, selectedDietTypeId, typeOfFood])
 
   useEffect(() => {
     async function fetchDietType() {
@@ -110,6 +109,19 @@ export function Restaurant() {
 
     fetchDietType()
   }, [])
+
+  function handleBoolFunction(event) {
+    let value = event.target.changed
+    const fieldName = event.target.name
+
+    console.log(value)
+
+    console.log(fieldName)
+
+    const updatedRestaurant = { ...openEarlyOrLate, [fieldName]: value }
+
+    setNewRestaurant(updatedRestaurant)
+  }
 
   console.log(restaurants)
 
