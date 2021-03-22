@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import format from 'date-fns/format'
 
 export function Reviews() {
@@ -67,6 +67,9 @@ export function Reviews() {
           })}
         </ul>
       </section>
+      <Link to="/all">
+        <p className="back">Back</p>
+      </Link>
     </>
   )
 }

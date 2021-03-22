@@ -62,9 +62,7 @@ export function Restaurant() {
   // Search parameters
   const [selectedDietTypeId, setSelectedDietTypeId] = useState(0)
   const [typeOfFood, setTypeOfFood] = useState('')
-  const [openEarlyOrLate, setOpenEarlyOrLate] = useState(false)
-
-  console.log(selectedDietTypeId)
+  // const [openEarlyOrLate, setOpenEarlyOrLate] = useState('true')
 
   useEffect(() => {
     async function fetchRestaurants() {
@@ -76,6 +74,7 @@ export function Restaurant() {
 
       url += `?filter=${filterText}`
       url += `&dietTypeId=${selectedDietTypeId}`
+      // url += `&openEarlyOrLate=${openEarlyOrLate}`
       url += `&typeOfFood=${typeOfFood}`
 
       const response = await fetch(url)
@@ -110,67 +109,74 @@ export function Restaurant() {
     fetchDietType()
   }, [])
 
-  function handleBoolFunction(event) {
-    let value = event.target.changed
-    const fieldName = event.target.name
+  // function handleBoolFunction(event) {
+  //   let value = event.target.changed
+  //   const fieldName = event.target.name
 
-    console.log(value)
+  //   console.log(value)
 
-    console.log(fieldName)
-
-    const updatedRestaurant = { ...openEarlyOrLate, [fieldName]: value }
-
-    setNewRestaurant(updatedRestaurant)
-  }
-
-  console.log(restaurants)
+  //   setOpenEarlyOrLate(value)
+  // }
 
   const typesOfFood = [
     ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
   ]
 
-  console.log(typesOfFood)
-
   return (
     <>
       <div className="Restaurants">
-        <select
-          value={selectedDietTypeId}
+        <div className="searchDrop">
+          <select
+            value={selectedDietTypeId}
+            onChange={function (event) {
+              setSelectedDietTypeId(Number(event.target.value))
+            }}
+          >
+            <option value="">Diet Type</option>
+            {dietTypes.map(function (diet) {
+              return (
+                <option key={diet.id} value={diet.id}>
+                  {diet.diet}
+                </option>
+              )
+            })}
+          </select>
+
+          {/* <select
+          value={openEarlyOrLate}
           onChange={function (event) {
-            setSelectedDietTypeId(Number(event.target.value))
+            setOpenEarlyOrLate(event.target.value)
           }}
         >
-          <option value="">Diet Type</option>
-          {dietTypes.map(function (diet) {
-            return (
-              <option key={diet.id} value={diet.id}>
-                {diet.diet}
-              </option>
-            )
-          })}
-        </select>
-
-        <select>
           <option value="">Hours</option>
-          <option value="openEarly">Open Early</option>
-          <option value="openLate">Open Late</option>
+          <option value="false">Open Early</option>
+          <option value="false">Open Late</option>
         </select>
 
-        <select
-          value={typeOfFood}
-          onChange={function (event) {
-            setTypeOfFood(event.target.value)
-          }}
-        >
-          <option value="">Type Of Food</option>
-          {typesOfFood.map(function (typeOfFood) {
-            return (
-              <option key={typeOfFood} value={typeOfFood}>
-                {typeOfFood}
-              </option>
-            )
-          })}
-        </select>
+        <label>Open Early</label>
+        <input
+          type="checkbox"
+          value={openEarlyOrLate}
+          onClick={handleBoolFunction}
+          name="openEarly"
+        /> */}
+
+          <select
+            value={typeOfFood}
+            onChange={function (event) {
+              setTypeOfFood(event.target.value)
+            }}
+          >
+            <option value="">Type Of Food</option>
+            {typesOfFood.map(function (typeOfFood) {
+              return (
+                <option key={typeOfFood} value={typeOfFood}>
+                  {typeOfFood}
+                </option>
+              )
+            })}
+          </select>
+        </div>
 
         <div className="Search">
           <input
@@ -186,7 +192,6 @@ export function Restaurant() {
             <button>Add Restaurant</button>
           </Link>
         </div>
-
         <ul className="results">
           {restaurants.map(function (restaurant) {
             return (

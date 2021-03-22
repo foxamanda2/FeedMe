@@ -31,7 +31,7 @@ namespace FeedMe.Controllers
         // Returns a list of all your Restaurants
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, int dietTypeId, string openEarlyOrLate, string typeOfFood)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, int dietTypeId, bool openEarlyOrLate, string typeOfFood)
         {
             var matchingDiet = await _context.Restaurants.
                                             Include(restaurant => restaurant.Reviews).
@@ -45,8 +45,8 @@ namespace FeedMe.Controllers
                                                 (dietTypeId == 0 || restaurantAndRestaurantDietType.RestaurantDietType.DietTypeId == dietTypeId)
                                                 &&
                                                 (typeOfFood == null || restaurantAndRestaurantDietType.Restaurant.TypeOfFood.ToLower().Contains(typeOfFood.ToLower()))
-                                                &&
-                                                (openEarlyOrLate == null || restaurantAndRestaurantDietType.Restaurant.OpenEarly == true || restaurantAndRestaurantDietType.Restaurant.OpenLate == true)
+                                            // &&
+                                            // (openEarlyOrLate == false || restaurantAndRestaurantDietType.Restaurant.OpenEarly.Equals(restaurantAndRestaurantDietType.Restaurant.OpenEarly)  || restaurantAndRestaurantDietType.Restaurant.OpenLate.Equals(restaurantAndRestaurantDietType.Restaurant.OpenLate))
 
                                             )).
                                             Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).
@@ -63,9 +63,9 @@ namespace FeedMe.Controllers
             var restaurantCount = _context.Restaurants.Count();
             // Find the restaurant in the database using `FindAsync` to look it up by id
             var restaurants = await _context.Restaurants.
-            Include(restaurant => restaurant.Reviews).
-            Include(restaurant => restaurant.RestaurantDietTypes).
-            ThenInclude(restaurantDietType => restaurantDietType.DietType).
+                        Include(restaurant => restaurant.Reviews).
+                        Include(restaurant => restaurant.RestaurantDietTypes).
+                        ThenInclude(restaurantDietType => restaurantDietType.DietType).
             Skip(randomNumber.Next(restaurantCount)).
             Take(1).ToListAsync();
 

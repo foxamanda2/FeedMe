@@ -214,12 +214,13 @@ export function NewRestaurant() {
           />
         </section>
 
-        <section>
+        <section className="diet">
+          <label>Diet Types (Select all that Apply)</label>
           {dietTypes.map(function (diet) {
             return (
               <React.Fragment key={diet.id}>
                 <input
-                  // value={diet.id}
+                  className="newDiet"
                   checked={selectedDietTypeIds.includes(diet.id)}
                   type="checkbox"
                   name="dietType"
@@ -247,6 +248,9 @@ export function NewRestaurant() {
             <span>{message}</span>
           </Link>
         </div>
+        <Link to="/all">
+          <p className="back">Back</p>
+        </Link>
       </form>
     </>
   )

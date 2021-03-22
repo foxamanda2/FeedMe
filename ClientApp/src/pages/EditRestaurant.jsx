@@ -121,6 +121,9 @@ export function EditRestaurant() {
             <div className="message">{message}</div>
           </Link>
         </div>
+        <Link to="/all">
+          <p className="back">Back</p>
+        </Link>
       </form>
     </main>
   )

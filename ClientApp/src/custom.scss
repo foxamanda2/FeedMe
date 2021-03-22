@@ -6,6 +6,7 @@ $button-text: rgb(75, 75, 75);
 $accent-color: rgb(196, 151, 146);
 $background-color: #edededc7;
 $modal-color: #edededea;
+$font-family: 'Raleway', sans-serif;
 
 :root {
   font: 16px / 1 sans-serif;
@@ -38,7 +39,7 @@ body {
 .Intro {
   text-align: center;
   margin: 200px 30px;
-  background-color: #ededed73;
+  background-color: $background-color;
 }
 
 nav {
@@ -280,6 +281,15 @@ ul.results button.editButton {
   margin-left: 10px;
 }
 
+select {
+  color: $button-text;
+  font-family: $font-family;
+  margin: 10px;
+}
+div.searchDrop {
+  text-align: center;
+}
+
 // Updating Page
 
 .updatePage {
@@ -332,6 +342,13 @@ form.NewRest {
     text-align: center;
     align-items: center;
   }
+  label {
+    color: $button-text;
+    font-family: $font-family;
+  }
+  input {
+    font-family: $font-family;
+  }
 }
 
 form.NewRest .TextField input,
@@ -365,11 +382,27 @@ form.NewRest div {
     background-color: $button-color;
     color: $button-text;
     padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
   }
 }
+
+section.diet {
+  color: $button-text;
+  label {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+}
+
 .Restaurants select {
   background-color: $background-color;
+}
+
+p.back {
+  text-align: center;
+  margin-bottom: 30px;
+  text-decoration: underline;
 }
 
 // All Links Colors and hover
@@ -412,6 +445,12 @@ ul.reviews {
   margin-top: 20px;
   background-color: $background-color;
   border-top: thin solid $accent-color;
+}
+
+.allReviews button {
+  border-radius: 50%;
+  background-color: $button-color;
+  color: $button-text;
 }
 
 // New Review
@@ -477,10 +516,54 @@ ul.reviews {
 // About Me
 div.about {
   margin: 0px auto;
-}
-img {
-  height: 13rem;
-  margin: 0px auto;
+  color: $button-text;
+
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  p {
+    background-color: $background-color;
+    text-align: center;
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 30%;
+    margin: 0px auto;
+    margin-top: 40px;
+  }
+  figure {
+    margin-right: 20px;
+    img {
+      margin: 0px auto;
+      height: 12rem;
+      border-radius: 30%;
+      border: solid thin $accent-color;
+    }
+
+    figcaption {
+      text-align: center;
+      background-color: $background-color;
+      border-radius: 30%;
+    }
+  }
+
+  img.git {
+    height: 40px;
+    margin: 20px;
+    background-color: $background-color;
+  }
+
+  img.linkedin {
+    height: 40px;
+    margin: 20px;
+    background-color: $background-color;
+  }
 }
 
 @media only screen and (min-width: 550px) {

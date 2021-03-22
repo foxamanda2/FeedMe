@@ -17,10 +17,10 @@ export function Randomizer() {
     openEarly: null,
     reviews: [],
   })
-  const [dietTypes, setDietTypes] = useState([])
+  // const [dietTypes, setDietTypes] = useState([])
 
   // search Parameters
-  const [selectedDiet, setSelectedDiet] = useState('')
+  // const [selectedDiet, setSelectedDiet] = useState('')
   // const [typeOfFood, setTypeOfFood] = useState('')
 
   const params = useParams()
@@ -46,23 +46,23 @@ export function Randomizer() {
     setRandRestaurants(apiData)
   }
 
-  useEffect(() => {
-    async function fetchDietType() {
-      const url = '/api/DietTypes'
+  // useEffect(() => {
+  //   async function fetchDietType() {
+  //     const url = '/api/DietTypes'
 
-      const response = await fetch(url)
-      const json = await response.json()
+  //     const response = await fetch(url)
+  //     const json = await response.json()
 
-      setDietTypes(json)
-    }
+  //     setDietTypes(json)
+  //   }
 
-    fetchDietType()
-  }, [])
+  //   fetchDietType()
+  // }, [])
 
   return (
     <>
       <aside>
-        <select
+        {/* <select
           value={selectedDiet}
           onChange={function (event) {
             setSelectedDiet(event.target.value)
@@ -84,7 +84,7 @@ export function Randomizer() {
         <select>
           <option>Mexican</option>
           <option>Comfort</option>
-        </select>
+        </select> */}
         <footer>
           {/* Need to create a random Link */}
           <button className="Random" onClick={handleRandRestaurant}>
