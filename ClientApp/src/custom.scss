@@ -33,6 +33,7 @@ body {
   font-family: 'Fascinate', cursive;
   color: rgb(97, 96, 96);
   text-shadow: 1px 1px rgb(241, 214, 210);
+  text-decoration: none;
 }
 
 // Body Description for Home
@@ -311,7 +312,8 @@ div.searchDrop {
     border-radius: 50%;
     background-color: $button-color;
     color: $button-text;
-    padding: 5px;
+    padding: 15px;
+    margin-top: 15px;
   }
 
   .message {
@@ -385,9 +387,9 @@ form.NewRest div {
     border-radius: 50%;
     background-color: $button-color;
     color: $button-text;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 5px;
-    margin-top: 5px;
+    margin-top: 15px;
   }
 }
 
@@ -405,7 +407,9 @@ section.diet {
 
 p.back {
   text-align: center;
+  margin-top: 30px;
   margin-bottom: 30px;
+  font-size: 20px;
   text-decoration: underline;
 }
 
@@ -451,6 +455,7 @@ ul.reviews {
   margin: 0px auto;
   text-decoration: underline;
   width: fit-content;
+  font-size: 20px;
 }
 
 .reviews li {
@@ -463,6 +468,8 @@ ul.reviews {
   border-radius: 50%;
   background-color: $button-color;
   color: $button-text;
+  padding: 10px;
+  margin-left: 10px;
 }
 
 // New Review
