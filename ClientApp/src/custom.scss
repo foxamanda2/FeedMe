@@ -171,10 +171,6 @@ header {
   display: block;
   position: sticky;
   top: 10px;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
-  // background: linear-gradient(transparent, #ededed);
   z-index: 1;
 }
 
@@ -220,13 +216,6 @@ footer {
 h2 {
   font-size: 25px;
 }
-
-// .Map {
-//   background-color: white;
-//   padding: 100px;
-//   margin-right: 20px;
-//   margin-left: 20px;
-// }
 
 // Stars
 .stars {
@@ -519,7 +508,7 @@ ul.reviews {
       margin-bottom: 4px;
     }
     p.home {
-      font-size: 15px;
+      font-size: 23px;
       text-decoration: underline;
       cursor: pointer;
     }
@@ -600,5 +589,9 @@ div.about {
     padding: 0.75em 0.75em;
     margin: 5px;
     width: 30rem;
+  }
+
+  .newReview fieldset p.home {
+    font-size: 20px;
   }
 }
