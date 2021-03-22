@@ -68,7 +68,7 @@ export function Reviews() {
         </ul>
       </section>
       <Link to="/all">
-        <p className="back">Back</p>
+        <p className="backReview">Back</p>
       </Link>
     </>
   )

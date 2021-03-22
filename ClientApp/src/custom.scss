@@ -296,6 +296,8 @@ div.searchDrop {
   text-align: center;
   background-color: $background-color;
   color: $button-text;
+  width: fit-content;
+  margin: 0px auto;
 
   textarea {
     background-color: $background-color;
@@ -315,6 +317,12 @@ div.searchDrop {
   .message {
     text-decoration: underline;
   }
+}
+.updateForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 // Creating white space for a scroll on large view
@@ -353,13 +361,9 @@ form.NewRest {
 
 form.NewRest .TextField input,
 textarea {
-  display: inline-grid;
-  vertical-align: top;
-  align-items: center;
   position: relative;
   padding: 0.25em 0.5em;
   margin: 5px;
-  align-items: stretch;
   width: 20rem;
   text-align: center;
   font-size: 1.1rem;
@@ -431,6 +435,7 @@ ul.reviews {
 
 .reviews {
   list-style: none;
+  text-align: center;
 
   .summary {
     font-size: 20px;
@@ -439,6 +444,13 @@ ul.reviews {
   .body {
     padding-bottom: 10px;
   }
+}
+
+.backReview {
+  background-color: $background-color;
+  margin: 0px auto;
+  text-decoration: underline;
+  width: fit-content;
 }
 
 .reviews li {
@@ -570,5 +582,16 @@ div.about {
   body {
     background-size: cover;
     background-repeat: none;
+  }
+  .newReview {
+    width: 90vw;
+    height: 80vh;
+  }
+
+  form.NewRest .TextField input,
+  textarea {
+    padding: 0.75em 0.75em;
+    margin: 5px;
+    width: 30rem;
   }
 }
