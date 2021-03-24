@@ -111,8 +111,6 @@ export function Restaurant() {
     ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
   ]
 
-  console.log(openEarly)
-
   return (
     <>
       <div className="Restaurants">
