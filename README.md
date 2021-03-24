@@ -1,6 +1,6 @@
 # FeedMe
 
-[Minesweeper Link](https://feed-me-sdg.herokuapp.com/)
+[Feed Me App](https://feed-me-sdg.herokuapp.com/)
 
 ![](http://g.recordit.co/f9PzCl0MJk.gif)
 
