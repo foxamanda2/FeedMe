@@ -2,7 +2,7 @@
 
 [Minesweeper Link](https://feed-me-sdg.herokuapp.com/)
 
-![Getting Started](http://g.recordit.co/f9PzCl0MJk.gif)
+![](http://g.recordit.co/f9PzCl0MJk.gif)
 
 - This Full-Stack App is meant to make eating out with a diet easy. Many local restaurants are laid out for you to search through. You can also add your own! Luckily if you cant make a decision head over to the randomizer to pick a random restaurant from our list.
 
