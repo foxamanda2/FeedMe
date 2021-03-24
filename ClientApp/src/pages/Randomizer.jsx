@@ -22,29 +22,53 @@ export function Randomizer() {
   // search Parameters
   // const [selectedDiet, setSelectedDiet] = useState('')
   // const [typeOfFood, setTypeOfFood] = useState('')
+  // const [restaurants, setRestaurants] = useState([])
 
   const params = useParams()
 
   let id = Number(params.id)
 
+  // useEffect(() => {
+  //   async function fetchRestaurant() {
+  //     const response = await fetch('/api/Restaurants')
+
+  //     const apiData = await response.json()
+
+  //     setRestaurants(apiData)
+  //   }
+  //   fetchRestaurant()
+  // }, [])
+
   useEffect(() => {
-    async function fetchRestaurant() {
-      const response = await fetch(`/api/Restaurants/random`)
+    async function fetchRandomRestaurant() {
+      let url = '/api/Restaurants/random'
+      // url += `?typeOfFood=${typeOfFood}`
+
+      const response = await fetch(url)
+
       const apiData = await response.json()
 
       setRandRestaurants(apiData)
     }
-    fetchRestaurant()
+    fetchRandomRestaurant()
   }, [id])
 
   async function handleRandRestaurant(event) {
     event.preventDefault()
 
-    const response = await fetch(`/api/Restaurants/random`)
+    let url = '/api/Restaurants/random'
+    // url += `?typeOfFood=${typeOfFood}`
+
+    const response = await fetch(url)
+
     const apiData = await response.json()
 
     setRandRestaurants(apiData)
   }
+
+  // const typesOfFood = [
+  //   ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
+  // ]
 
   // useEffect(() => {
   //   async function fetchDietType() {
@@ -80,11 +104,23 @@ export function Randomizer() {
         <select>
           <option>Open Early</option>
           <option>Open Late</option>
-        </select>
-        <select>
-          <option>Mexican</option>
-          <option>Comfort</option>
+        </select>*/}
+        {/* <select
+          value={typeOfFood}
+          onChange={function (event) {
+            setTypeOfFood(event.target.value)
+          }}
+        >
+          <option value="">Type Of Food</option>
+          {typesOfFood.map(function (typeOfFood) {
+            return (
+              <option key={typeOfFood} value={typeOfFood}>
+                {typeOfFood}
+              </option>
+            )
+          })}
         </select> */}
+
         <footer>
           {/* Need to create a random Link */}
           <button className="Random" onClick={handleRandRestaurant}>

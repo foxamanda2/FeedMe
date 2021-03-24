@@ -62,20 +62,18 @@ export function Restaurant() {
   // Search parameters
   const [selectedDietTypeId, setSelectedDietTypeId] = useState(0)
   const [typeOfFood, setTypeOfFood] = useState('')
-  // const [openEarlyOrLate, setOpenEarlyOrLate] = useState('true')
+  const [openEarly, setOpenEarly] = useState(false)
+  const [openLate, setOpenLate] = useState(false)
 
   useEffect(() => {
     async function fetchRestaurants() {
       let url = '/api/Restaurants'
-      // const url =
-      //   filterText.length === 0
-      //     ? '/api/Restaurants'
-      //     : `/api/Restaurants?filter=${filterText}`
 
       url += `?filter=${filterText}`
       url += `&dietTypeId=${selectedDietTypeId}`
-      // url += `&openEarlyOrLate=${openEarlyOrLate}`
       url += `&typeOfFood=${typeOfFood}`
+      url += `&openEarly=${openEarly}`
+      url += `&openLate=${openLate}`
 
       const response = await fetch(url)
       const json = await response.json()
@@ -94,7 +92,7 @@ export function Restaurant() {
     }
 
     fetchRestaurants()
-  }, [filterText, selectedDietTypeId, typeOfFood])
+  }, [filterText, selectedDietTypeId, openEarly, openLate, typeOfFood])
 
   useEffect(() => {
     async function fetchDietType() {
@@ -109,18 +107,11 @@ export function Restaurant() {
     fetchDietType()
   }, [])
 
-  // function handleBoolFunction(event) {
-  //   let value = event.target.changed
-  //   const fieldName = event.target.name
-
-  //   console.log(value)
-
-  //   setOpenEarlyOrLate(value)
-  // }
-
   const typesOfFood = [
     ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
   ]
+
+  console.log(openEarly)
 
   return (
     <>
@@ -142,24 +133,23 @@ export function Restaurant() {
             })}
           </select>
 
-          {/* <select
-          value={openEarlyOrLate}
-          onChange={function (event) {
-            setOpenEarlyOrLate(event.target.value)
-          }}
-        >
-          <option value="">Hours</option>
-          <option value="false">Open Early</option>
-          <option value="false">Open Late</option>
-        </select>
+          <select
+            onChange={function (event) {
+              setOpenEarly(Boolean(event.target.value))
+            }}
+          >
+            <option value="">Open Early?</option>
+            <option value="true">Yes</option>
+          </select>
 
-        <label>Open Early</label>
-        <input
-          type="checkbox"
-          value={openEarlyOrLate}
-          onClick={handleBoolFunction}
-          name="openEarly"
-        /> */}
+          <select
+            onChange={function (event) {
+              setOpenLate(Boolean(event.target.value))
+            }}
+          >
+            <option value="">Open Late?</option>
+            <option value="true">Yes</option>
+          </select>
 
           <select
             value={typeOfFood}

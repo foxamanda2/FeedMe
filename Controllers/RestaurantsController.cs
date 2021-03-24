@@ -31,7 +31,7 @@ namespace FeedMe.Controllers
         // Returns a list of all your Restaurants
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, int dietTypeId, bool openEarlyOrLate, string typeOfFood)
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants(string filter, int dietTypeId, bool openEarly, bool openLate, string typeOfFood)
         {
             var matchingDiet = await _context.Restaurants.
                                             Include(restaurant => restaurant.Reviews).
@@ -45,8 +45,11 @@ namespace FeedMe.Controllers
                                                 (dietTypeId == 0 || restaurantAndRestaurantDietType.RestaurantDietType.DietTypeId == dietTypeId)
                                                 &&
                                                 (typeOfFood == null || restaurantAndRestaurantDietType.Restaurant.TypeOfFood.ToLower().Contains(typeOfFood.ToLower()))
-                                            // &&
-                                            // (openEarlyOrLate == false || restaurantAndRestaurantDietType.Restaurant.OpenEarly.Equals(restaurantAndRestaurantDietType.Restaurant.OpenEarly)  || restaurantAndRestaurantDietType.Restaurant.OpenLate.Equals(restaurantAndRestaurantDietType.Restaurant.OpenLate))
+                                                &&
+                                                (openEarly == false || restaurantAndRestaurantDietType.Restaurant.OpenEarly == openEarly)
+                                                &&
+                                                (openLate == false || restaurantAndRestaurantDietType.Restaurant.OpenLate == openLate)
+
 
                                             )).
                                             Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).
@@ -57,7 +60,7 @@ namespace FeedMe.Controllers
 
         [HttpGet("random")]
         // Take in diet type. Where clause to limit restautants
-        public async Task<ActionResult<Restaurant>> RandomRestaurant()
+        public async Task<ActionResult<Restaurant>> RandomRestaurant(string typeOfFood)
         {
             Random randomNumber = new Random();
             var restaurantCount = _context.Restaurants.Count();
@@ -66,8 +69,16 @@ namespace FeedMe.Controllers
                         Include(restaurant => restaurant.Reviews).
                         Include(restaurant => restaurant.RestaurantDietTypes).
                         ThenInclude(restaurantDietType => restaurantDietType.DietType).
+            //                                 SelectMany(restaurant => _context.RestaurantDietTypes.Where(restaurantDietType => restaurantDietType.RestaurantId == restaurant.Id).DefaultIfEmpty(),
+            //                                                             (restaurant, restaurantDietType) => new { Id = restaurant.Id, Restaurant = restaurant, RestaurantDietType = restaurantDietType }).
+            //                                 Where(restaurantAndRestaurantDietType => (
+            //                                     (typeOfFood == null || restaurantAndRestaurantDietType.Restaurant.TypeOfFood.ToLower().Contains(typeOfFood.ToLower())))).
+            // Select(restaurantAndRestaurantDietType => restaurantAndRestaurantDietType.Restaurant).
             Skip(randomNumber.Next(restaurantCount)).
-            Take(1).ToListAsync();
+            Take(1)
+            .ToListAsync();
+
+
 
 
             // If we didn't find anything, we receive a `null` in return
