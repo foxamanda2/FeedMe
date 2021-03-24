@@ -16,6 +16,11 @@ INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOf
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Rawk Star Cafe','This is an all raw vegan restaurant. They do a great job at having fresh food with a good variety.', '4011 Tampa Rd #11, Oldsmar, FL 34677', '(813) 855-0007','Health','$$', true, 'http://www.rawkstarcafe.com/',false, false);
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Indias Grill Kennedy','Casual restaurant serving traditional Indian dishes, with a lunch buffet 7 days a week.', '3437 W Kennedy Blvd, Tampa, FL 33609', '(813) 872-8222','Indian','$$', false, 'https://indiasgrillkennedy.com/store/',false, false);
 INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Bodega Seminole Heights','Compact, outdoor counter serve selling Cuban/Latin-American sandwiches & plates, with patio seating.', '5901 N Florida Ave, Tampa, FL 33604', '(813) 533-3333','American Latin','$$', false, 'http://eatatbodega.com/',false, false);
+INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Sushi House by kazoku sushi','A menu of classic & creative sushi & Japanese fare with cozy sushi bar seating in a renovated home.', '1901 N 19th St, Tampa, FL 33605', '(813) 248-2333','Sushi','$$', false, 'https://yborcitysushihouse.com/',false, false);
+INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Mitmita Ethiopian Restaurant','This hole in he wall has some great Ethiopian food with welcoming customer service', '4901 W Linebaugh Ave, Tampa, FL 33624', '(813) 415-2183','Ethiopian','$', false, 'http://ethiomitmita.com/',true, false);
+INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Keson Thai Restaurant','Relaxed, colorful setting with outdoor seating for traditional Thai eats & lunch specials.', '5915 Memorial Hwy #101, Tampa, FL 33615', '(813) 443-6116','Thai','$', false, 'https://www.kesonthairestaurant.com/',false, false);
+INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Thai Prime Kitchen & Bar','A cool spot serving a classic Thai menu in a brick-walled spaced lined with lots of wood paneling.', '4142 W Boy Scout Blvd #5&6, Tampa, FL 33607', '(813) 302-9168','Thai','$$', false, 'https://www.thaiprime.com/',true, false);
+INSERT INTO "Restaurants" ("Name", "Description", "Address", "PhoneNum", "TypeOfFood", "PriceRange", "DietaryMenu", "Website","OpenLate","OpenEarly") VALUES ('Vegan International Co. Kitchen & Market','Laidback, counter-serve market & kitchen offering vegan dishes, packaged goods & snacks.', '13751 N Nebraska Ave, Tampa, FL 33613', '(813) 252-3147','Comfort','$', true, 'https://www.veganinternationalco.com/',false, false);
 
 
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (1, '2021-03-12 14:23:55', 'Great Variety', 'This food not only tastes healthy, but it also has a great variety for everyone!', 5);
@@ -26,6 +31,8 @@ INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VA
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (5, '2021-03-17T14:28:05.760Z', 'Great Central Spot', 'This spot has some of the most flavorful sushi you can find! The location has many other options which is always a plus.', 5);
 
 INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (6, '2021-03-20T18:30:05.760Z', 'Cant Believe it Aint Vegan', 'It is so hard to believe this ice cream is vegan. It is so rich and has so many varieties', 5);
+
+INSERT INTO "Reviews" ("RestaurantId", "Created", "Summary", "Body", "Stars") VALUES (18, '2021-03-24T18:30:05.760Z', 'Hidden Treasure', 'This spot has great customer searvice with food to match!', 5);
 
 -- VALUES ('Dharma Fine Vittles: Tampa', 'Located inside an modern urban food court this spot is a must try. They have all kinds of gourmet comfort foods. Their mac and cheese is to die for. ', '1910 N Ola Ave Suite 113, Tampa, FL 33602', '(813) 803-9998','Comfort','$$', true, 'https://dharmafinevittles.com/',true, true);
 
@@ -78,16 +85,23 @@ INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,14);
 INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,15);
 INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,15);
 
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,16);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,16);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (4,16);
 
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,17);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,17);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (4,17);
 
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,18);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,18);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (4,18);
 
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,19);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (3,19);
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (4,19);
 
-
-
-
-
-
-
+INSERT INTO "RestaurantDietTypes" ("DietTypeId", "RestaurantId") VALUES (1,20);
 
 
 
