@@ -17,12 +17,14 @@ function SingleRestaurantFromList(props) {
       <a href={restaurant.website}>
         <h2>{restaurant.name}</h2>
       </a>
-      <p>$$</p>
+      <p>
+        {restaurant.priceRange} {restaurant.typeOfFood}
+      </p>
       <p>{restaurant.description}</p>
       <address> {restaurant.address}</address>
       <p>{restaurant.phoneNum}</p>
 
-      <p>
+      <p className="allCheck">
         Dietary Menu:
         <input type="checkbox" checked={restaurant.dietaryMenu} readOnly />
       </p>

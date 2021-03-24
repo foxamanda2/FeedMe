@@ -130,13 +130,23 @@ export function Randomizer() {
       </aside>
 
       <section className="RandomRest" key={randRestaurant.id}>
-        {/* <a {randRestaurant.website}> */}
-        <h2>{randRestaurant.name}</h2>
-        {/* </a> */}
-        <p>{randRestaurant.priceRange}</p>
+        <a href={randRestaurant.website}>
+          <h2>{randRestaurant.name}</h2>
+        </a>
+        <p>
+          {randRestaurant.priceRange} {randRestaurant.typeOfFood}
+        </p>
         <p>{randRestaurant.description}</p>
         <address> {randRestaurant.address}</address>
         <p>{randRestaurant.phoneNum}</p>
+        <p className="allCheck">
+          Dietary Menu:
+          <input
+            type="checkbox"
+            checked={randRestaurant.dietaryMenu}
+            readOnly
+          />
+        </p>
         <Link to={`/restaurants/${randRestaurant.id}`}>
           <Stars restaurant={randRestaurant} />
         </Link>

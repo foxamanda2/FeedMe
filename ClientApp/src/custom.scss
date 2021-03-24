@@ -217,6 +217,18 @@ h2 {
   font-size: 25px;
 }
 
+.RandomRest a h2 {
+  text-decoration: underline;
+  color: rgb(2, 2, 100);
+}
+
+.RandomRest p.allCheck {
+  margin: 0px auto;
+  input {
+    width: 20px;
+  }
+}
+
 // Stars
 .stars {
   --rating: 0;
@@ -258,13 +270,14 @@ h2 {
 
 div.Search {
   text-align: center;
+  padding: 5px;
 }
 
 div.Restaurants button {
   border-radius: 50%;
   background-color: $button-color;
   color: $button-text;
-  padding: 5px;
+  padding: 10px;
 }
 
 ul.results button.editButton {
@@ -275,9 +288,17 @@ select {
   color: $button-text;
   font-family: $font-family;
   margin: 10px;
+  padding: 5px;
 }
 div.searchDrop {
   text-align: center;
+}
+
+.Restaurants p.allCheck {
+  margin: 0px auto;
+  input {
+    width: 20px;
+  }
 }
 
 // Updating Page
