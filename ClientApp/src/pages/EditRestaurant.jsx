@@ -56,6 +56,7 @@ export function EditRestaurant() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(restaurant),
     })
+
     setMessage('Updated your food! Click Here to go back.')
   }
 
@@ -121,6 +122,7 @@ export function EditRestaurant() {
             <div className="message">{message}</div>
           </Link>
         </div>
+
         <Link to="/all">
           <p className="back">Back</p>
         </Link>

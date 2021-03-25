@@ -182,6 +182,7 @@ export function Restaurant() {
             <button>Add Restaurant</button>
           </Link>
         </div>
+
         <ul className="results">
           {restaurants.map(function (restaurant) {
             return (

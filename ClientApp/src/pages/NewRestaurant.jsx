@@ -14,11 +14,10 @@ export function NewRestaurant() {
     openLate: false,
     openEarly: false,
   })
+
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-
   const [dietTypes, setDietTypes] = useState([])
-
   const [selectedDietTypeIds, setSelectedDietTypeIds] = useState([])
 
   // Functions and fetch for restaurant
@@ -49,9 +48,12 @@ export function NewRestaurant() {
 
     const response = await fetch('/api/Restaurants', {
       method: 'POST',
+
       headers: { 'content-type': 'application/json' },
+
       body: JSON.stringify(newRestaurant),
     })
+
     const json = await response.json()
 
     // Reset the form
@@ -62,7 +64,9 @@ export function NewRestaurant() {
         // Here is where we send a post to the api
         return fetch('/api/RestaurantDietTypes', {
           method: 'POST',
+
           headers: { 'Content-Type': 'application/json' },
+
           body: JSON.stringify({
             restaurantId: json.id,
             dietTypeId: dietTypeId,
@@ -244,10 +248,12 @@ export function NewRestaurant() {
           <button type="submit" value="Submit">
             Submit
           </button>
-          <Link to="/">
-            <span>{message}</span>
+
+          <Link to="/all">
+            <p>{message}</p>
           </Link>
         </div>
+
         <Link to="/all">
           <p className="back">Back</p>
         </Link>

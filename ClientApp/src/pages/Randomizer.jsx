@@ -17,9 +17,9 @@ export function Randomizer() {
     openEarly: null,
     reviews: [],
   })
-  // const [dietTypes, setDietTypes] = useState([])
 
   // search Parameters
+  // const [dietTypes, setDietTypes] = useState([])
   // const [selectedDiet, setSelectedDiet] = useState('')
   // const [typeOfFood, setTypeOfFood] = useState('')
   // const [restaurants, setRestaurants] = useState([])
@@ -122,7 +122,6 @@ export function Randomizer() {
         </select> */}
 
         <footer>
-          {/* Need to create a random Link */}
           <button className="Random" onClick={handleRandRestaurant}>
             Randomizer
           </button>

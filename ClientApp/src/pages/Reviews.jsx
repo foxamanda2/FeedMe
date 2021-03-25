@@ -4,7 +4,6 @@ import format from 'date-fns/format'
 
 export function Reviews() {
   const params = useParams()
-
   const history = useHistory()
 
   const [restaurantReview, setRestaurantReview] = useState({
@@ -43,20 +42,25 @@ export function Reviews() {
     <>
       <section className="allReviews">
         <h1>{restaurantReview.name}</h1>
+
         <ul className="reviews">
           {restaurantReview.reviews.map(function (reviews) {
             return (
               <li key={reviews.id}>
                 <div className="summary">{reviews.summary}</div>
+
                 <span className="stars" style={{ '--rating': reviews.stars }}>
                   ({reviews.stars})
                 </span>
+
                 <div className="body">{reviews.body}</div>
+
                 {reviews.created ? (
                   <time>{format(new Date(reviews.created), dateFormat)}</time>
                 ) : (
                   <div>{reviews.created}</div>
                 )}
+
                 <button
                   onClick={(event) => handleDeleteReview(event, reviews.id)}
                 >
@@ -67,6 +71,7 @@ export function Reviews() {
           })}
         </ul>
       </section>
+
       <Link to="/all">
         <p className="backReview">Back</p>
       </Link>
