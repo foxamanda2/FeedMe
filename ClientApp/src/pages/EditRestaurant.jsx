@@ -81,7 +81,7 @@ export function EditRestaurant() {
 
         <input
           type="tel"
-          name="telephone"
+          name="phoneNum"
           value={restaurant.phoneNum}
           onChange={handleStringChange}
           placeholder="New Phone Number"
