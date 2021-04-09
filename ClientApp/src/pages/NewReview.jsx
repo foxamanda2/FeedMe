@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export function NewReviewModal(props) {
   const restaurant = props.restaurant
 
+  // Set New Review State
   const [newReview, setNewReview] = useState({
     summary: '',
     body: '',
@@ -11,16 +12,19 @@ export function NewReviewModal(props) {
     restaurantId: restaurant.id,
   })
 
+  // Handling the text boxes
   function handleNewReviewText(event) {
     const name = event.target.name
     const value = event.target.value
     setNewReview({ ...newReview, [name]: value })
   }
 
+  // Handling the star radio buttons
   function handleStarButton(newStars) {
     setNewReview({ ...newReview, stars: newStars })
   }
 
+  // Post request for submitting new review
   async function submitNewReview(event) {
     event.preventDefault()
 

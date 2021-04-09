@@ -20,7 +20,7 @@ export function NewRestaurant() {
   const [dietTypes, setDietTypes] = useState([])
   const [selectedDietTypeIds, setSelectedDietTypeIds] = useState([])
 
-  // Functions and fetch for restaurant
+  // Handler for changes to all of the entry fields
   function handleFieldChange(event) {
     const value = event.target.value
     const fieldName = event.target.name
@@ -30,6 +30,7 @@ export function NewRestaurant() {
     setNewRestaurant(updatedRestaurant)
   }
 
+  // Handler for the checkbox boolean
   function handleBoolFunction(event) {
     let value = event.target.checked
     const fieldName = event.target.name
@@ -43,6 +44,7 @@ export function NewRestaurant() {
     setNewRestaurant(updatedRestaurant)
   }
 
+  // Post for a new restaurant
   async function handleNewRestaurantSubmit(event) {
     event.preventDefault()
 
@@ -95,8 +97,7 @@ export function NewRestaurant() {
 
   console.log(newRestaurant)
 
-  // Functions and fetch for Diet Type
-
+  // Pulling in Diet Types
   useEffect(() => {
     async function fetchDietTypes() {
       const url = '/api/DietTypes'

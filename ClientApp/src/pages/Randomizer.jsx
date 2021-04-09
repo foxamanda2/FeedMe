@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Stars } from '../components/Stars'
 
 export function Randomizer() {
+  // Setting state for Random Restaurants
   const [randRestaurant, setRandRestaurants] = useState({
     id: null,
     name: '',
@@ -18,15 +19,15 @@ export function Randomizer() {
     reviews: [],
   })
 
-  // search Parameters
+  const params = useParams()
+
+  let id = Number(params.id)
+
+  // search Parameters for Randomizer
   // const [dietTypes, setDietTypes] = useState([])
   // const [selectedDiet, setSelectedDiet] = useState('')
   // const [typeOfFood, setTypeOfFood] = useState('')
   // const [restaurants, setRestaurants] = useState([])
-
-  const params = useParams()
-
-  let id = Number(params.id)
 
   // useEffect(() => {
   //   async function fetchRestaurant() {
@@ -39,6 +40,7 @@ export function Randomizer() {
   //   fetchRestaurant()
   // }, [])
 
+  // Pulling a random restaurant
   useEffect(() => {
     async function fetchRandomRestaurant() {
       let url = '/api/Restaurants/random'
@@ -53,6 +55,7 @@ export function Randomizer() {
     fetchRandomRestaurant()
   }, [id])
 
+  // Handler to select a new random restaurant---Additionally going to add the search parameters
   async function handleRandRestaurant(event) {
     event.preventDefault()
 
@@ -66,6 +69,7 @@ export function Randomizer() {
     setRandRestaurants(apiData)
   }
 
+  //
   // const typesOfFood = [
   //   ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
   // ]

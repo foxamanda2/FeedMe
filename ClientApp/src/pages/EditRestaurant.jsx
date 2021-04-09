@@ -20,6 +20,7 @@ export function EditRestaurant() {
     openEarly: false,
   })
 
+  // Pulling in restaurant by id
   useEffect(() => {
     const fetchRestaurant = async () => {
       const response = await fetch(`/api/Restaurants/${id}`)
@@ -30,6 +31,7 @@ export function EditRestaurant() {
     fetchRestaurant()
   }, [id])
 
+  // Handling any text changes
   function handleStringChange(event) {
     const value = event.target.value
     const fieldName = event.target.name
@@ -39,6 +41,7 @@ export function EditRestaurant() {
     setRestaurant(updatedRestaurant)
   }
 
+  // Handling for checkbox boolean
   function handleBoolChange(event) {
     let value = event.target.checked
     const fieldName = event.target.name
@@ -48,6 +51,7 @@ export function EditRestaurant() {
     setRestaurant(updatedRestaurant)
   }
 
+  // Put for submitting the updated restaurant
   async function handleFormSubmit(event) {
     event.preventDefault()
 

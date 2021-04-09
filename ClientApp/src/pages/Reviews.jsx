@@ -13,6 +13,7 @@ export function Reviews() {
   })
   const id = Number(params.id)
 
+  // Pulling in restaurant by the id
   useEffect(() => {
     async function fetchRestaurant() {
       const response = await fetch(`/api/Restaurants/${id}`)
@@ -23,6 +24,7 @@ export function Reviews() {
     fetchRestaurant()
   }, [id])
 
+  // Delete a review by review ID
   async function handleDeleteReview(event, reviewId) {
     event.preventDefault()
 

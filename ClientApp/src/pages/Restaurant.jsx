@@ -4,6 +4,7 @@ import { NewReviewModal } from './NewReview'
 import { Stars } from '../components/Stars'
 
 function SingleRestaurantFromList(props) {
+  // State and function for the review modal
   const [userPressedNew, setUserPressedNew] = useState(false)
 
   const restaurant = props.restaurant
@@ -67,6 +68,7 @@ export function Restaurant() {
   const [openEarly, setOpenEarly] = useState(false)
   const [openLate, setOpenLate] = useState(false)
 
+  // Puling in the restaurants plus search parameters
   useEffect(() => {
     async function fetchRestaurants() {
       let url = '/api/Restaurants'
@@ -96,6 +98,7 @@ export function Restaurant() {
     fetchRestaurants()
   }, [filterText, selectedDietTypeId, openEarly, openLate, typeOfFood])
 
+  // Pulling in diet types
   useEffect(() => {
     async function fetchDietType() {
       const url = '/api/DietTypes'
@@ -109,6 +112,7 @@ export function Restaurant() {
     fetchDietType()
   }, [])
 
+  // No repeats for the type of food
   const typesOfFood = [
     ...new Set(restaurants.map((restaurant) => restaurant.typeOfFood)),
   ]
